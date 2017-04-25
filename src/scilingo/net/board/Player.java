@@ -7,9 +7,12 @@ public class Player {
 	private final char _SYMBOL;
 	private Stack<Move> _moves;
 	private static int _playerCount = 0;
+	private final String _name;
 	
 	// My Player Identifier
+	// Player starts at one once added lines 22-23
 	private int ID = 0;
+	
 	
 	public Player(char symbol){
 		this._SYMBOL = symbol;
@@ -18,6 +21,7 @@ public class Player {
 		// keep track of number of players
 		_playerCount++;
 		this.ID = _playerCount;
+		this._name = new StringBuilder().append("Player ").append(this.ID).toString();
 	}
 	
 	public char move(Move move){
@@ -27,7 +31,7 @@ public class Player {
 	
 	@Override
 	public String toString(){
-		return new StringBuilder().append("Player ").append(this.ID).toString();
+		return this._name;
 	}
 	
 	public static int getNumberOfPlayers(){
