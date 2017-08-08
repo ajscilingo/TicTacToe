@@ -2,8 +2,8 @@ package scilingo.net.board;
 
 public class MoveLowerRight implements Move {
 
-	private Board _gameBoard;
-	private Player _player;
+	private final Board _gameBoard;
+	private final Player _player;
 	
 	public MoveLowerRight(Board board, Player player) {
 		this._gameBoard = board;
@@ -23,6 +23,11 @@ public class MoveLowerRight implements Move {
 	@Override 
 	public String toString(){
 		return "Move To Lower Right";
+	}
+
+	@Override
+	public Player madeBy() {
+		return this._player;
 	}
 
 }

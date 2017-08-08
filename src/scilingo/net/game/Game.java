@@ -11,12 +11,14 @@ class Game {
 	protected Player _playerB;
 	protected Board _gameBoard;
 	protected int _numberOfMoves;
+	private final static char _x = 'X';
+	private final static char _o = 'O';
 	
 	private static String _newLine = System.getProperty("line.separator");
 	
 	public Game(){
-		_playerA = new Player('X');
-		_playerB = new Player('O');
+		_playerA = new Player(_x);
+		_playerB = new Player(_o);
 		_gameOver = false;
 		_gameBoard = new Board();
 	}
@@ -65,8 +67,9 @@ class Game {
 				_gameOver = true;
 			}
 			else{
-				if(this._gameBoard.checkForWin()){
-					System.out.println(this._currentPlayer + " Wins!");
+				if(_currentPlayer.hasWon()){
+					System.out.println(_currentPlayer.getWonStatus().wonBy());
+					_currentPlayer.getMoveHistory();
 					_gameOver =  true;
 				}
 			}

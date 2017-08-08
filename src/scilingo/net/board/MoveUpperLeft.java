@@ -2,8 +2,8 @@ package scilingo.net.board;
 
 public class MoveUpperLeft implements Move {
 
-	Board _gameBoard;
-	Player _player;
+	private final Board _gameBoard;
+	private final Player _player;
 	
 	public MoveUpperLeft(Board board, Player player){
 		this._gameBoard = board;
@@ -24,6 +24,11 @@ public class MoveUpperLeft implements Move {
 	@Override 
 	public String toString(){
 		return "Move To Upper Left";
+	}
+
+	@Override
+	public Player madeBy() {
+		return this._player;
 	}
 	
 }
