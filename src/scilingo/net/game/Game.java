@@ -11,14 +11,14 @@ class Game {
 	protected Player _playerB;
 	protected Board _gameBoard;
 	protected int _numberOfMoves;
-	private final static char _x = 'X';
-	private final static char _o = 'O';
+	private final static char _playerASymbol = 'X';
+	private final static char _playerBSymbol = 'O';
 	
 	private static String _newLine = System.getProperty("line.separator");
 	
 	public Game(){
-		_playerA = new Player(_x);
-		_playerB = new Player(_o);
+		_playerA = new Player(_playerASymbol);
+		_playerB = new Player(_playerBSymbol);
 		_gameOver = false;
 		_gameBoard = new Board();
 	}
