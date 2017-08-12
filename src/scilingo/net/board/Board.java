@@ -3,10 +3,8 @@ package scilingo.net.board;
 public class Board {
 
 	protected char [][] _gameBoard;
-	private static String _newLine = System.getProperty("line.separator");
 	private static int rows = 3;
 	private static int cols = 3;
-	private final static char UNOCCUPIED_SPACE = '_';
 	
 	public Board(){
 		_gameBoard = new char[rows][cols];
@@ -17,7 +15,7 @@ public class Board {
 	protected void clearBoard(){
 		for(int row=0; row<3; row++){
 			for(int col=0; col<3; col++){
-				_gameBoard[row][col] = UNOCCUPIED_SPACE;
+				_gameBoard[row][col] = Constants.UNOCCUPIED_SPACE;
 			}
 		}
 	}
@@ -34,7 +32,7 @@ public class Board {
 		int row = r.ordinal();
 		int col = c.ordinal();
 		
-		if(_gameBoard[row][col] == UNOCCUPIED_SPACE)
+		if(_gameBoard[row][col] == Constants.UNOCCUPIED_SPACE)
 			return true;
 		return false;
 	}
@@ -48,13 +46,13 @@ public class Board {
 		.append(_gameBoard[0][1])
 		.append("|")
 		.append(_gameBoard[0][2])
-		.append(_newLine)
+		.append(Constants.NEWLINE)
 		.append(_gameBoard[1][0])
 		.append("|")
 		.append(_gameBoard[1][1])
 		.append("|")
 		.append(_gameBoard[1][2])
-		.append(_newLine)
+		.append(Constants.NEWLINE)
 		.append(_gameBoard[2][0])
 		.append("|")
 		.append(_gameBoard[2][1])
