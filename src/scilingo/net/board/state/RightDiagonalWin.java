@@ -2,16 +2,14 @@ package scilingo.net.board.state;
 
 import scilingo.net.board.Player;
 
-public class RightDiagonalWin implements WinningState {
+public class RightDiagonalWin extends AbstractGameState {
 
-	private Player _player;
-	
 	public RightDiagonalWin(Player player) {
 		this._player = player;
 	}
 	
 	@Override
-	public String wonBy() {
+	public String printState() {
 		return new StringBuilder().append("Right Diagonal Win By ").append(_player.toString()).toString();
 
 	}

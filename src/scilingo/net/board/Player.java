@@ -23,13 +23,14 @@ public class Player {
 	private MoveUpperMiddle _upperMiddle = null;
 	private MoveUpperRight _upperRight = null;
 	
-	private WinningState _wonState = null;
+	private GameState _gameState = null;
+	
+	private static int _currentNumOfMovesForAllPlayersInGame = 0;
 	
 	// My Player Identifier
 	// Player starts at one once added lines 22-23
 	private int ID = 0;
-	
-	
+		
 	public Player(char symbol){
 		this._SYMBOL = symbol;
 		this._moves = new Stack<Move>();
@@ -47,30 +48,39 @@ public class Player {
 		
 		case "MoveLowerLeft":
 			this._lowerLeft = (MoveLowerLeft) move;
+			_currentNumOfMovesForAllPlayersInGame++;
 			break;
 		case "MoveLowerMiddle":
 			this._lowerMiddle = (MoveLowerMiddle) move;
+			_currentNumOfMovesForAllPlayersInGame++;
 			break;
 		case "MoveLowerRight" :
+			_currentNumOfMovesForAllPlayersInGame++;
 			this._lowerRight = (MoveLowerRight) move;
 			break;
 		case "MoveMiddleLeft" :
 			this._middleLeft = (MoveMiddleLeft) move;
+			_currentNumOfMovesForAllPlayersInGame++;
 			break;
 		case "MoveMiddleMiddle" :
 			this._middleMiddle = (MoveMiddleMiddle) move;
+			_currentNumOfMovesForAllPlayersInGame++;
 			break;
 		case "MoveMiddleRight" :
 			this._middleRight = (MoveMiddleRight) move;
+			_currentNumOfMovesForAllPlayersInGame++;
 			break;
 		case "MoveUpperLeft" : 
 			this._upperLeft = (MoveUpperLeft) move;
+			_currentNumOfMovesForAllPlayersInGame++;
 			break;
 		case "MoveUpperMiddle" :
 			this._upperMiddle = (MoveUpperMiddle) move;
+			_currentNumOfMovesForAllPlayersInGame++;
 			break;
 		case "MoveUpperRight" :
 			this._upperRight = (MoveUpperRight) move;
+			_currentNumOfMovesForAllPlayersInGame++;
 			break;
 		}
 		
@@ -113,55 +123,25 @@ public class Player {
 		return (_upperRight != null);
 	}
 	
-	public boolean hasWon() {
-		
-		// Top Row Win
-		if(this.hasUpperLeft() && this.hasUpperMiddle() && this.hasUpperRight()) {
-			_wonState = new TopRowWin(this);
-		}
-		// Middle Row Win
-		else if(this.hasMiddleLeft() && this.hasMiddleMiddle() && this.hasMiddleRight()) {
-			_wonState = new MiddleRowWin(this);
-		}
-		// Bottom Row Win
-		else if(this.hasLowerLeft() && this.hasLowerMiddle() && this.hasLowerRight()) {
-			_wonState = new BottomRowWin(this);
-		}
-		// Left Column Win
-		else if(this.hasUpperLeft() && this.hasMiddleLeft() && this.hasLowerLeft()) {
-			_wonState = new LeftColumnWin(this);
-		}
-		// Middle Column Win
-		else if(this.hasUpperMiddle() && this.hasMiddleMiddle() && this.hasLowerMiddle()) {
-			_wonState = new MiddleColumnWin(this);
-		}
-		// Right Column Win
-		else if(this.hasUpperRight() && this.hasMiddleRight() && this.hasLowerRight()) {
-			_wonState = new RightColumnWin(this);
-		}
-		// Right Diagonal Win
-		else if(this.hasUpperLeft() && this.hasMiddleMiddle() && this.hasLowerRight()) {
-			_wonState = new RightDiagonalWin(this);
-		}
-		// Left Diagonal Win
-		else if(this.hasLowerLeft() && this.hasMiddleMiddle() && this.hasUpperRight()) {
-			_wonState = new LeftDiagonalWin(this);
-		}
-		
-		return (_wonState != null);
+	public boolean isGameOver() {
+		_gameState = PlayerState.determineState(this);
+		return (_gameState != null);
 	}
 	
-	public WinningState getWonStatus() {
-		return _wonState;
+	public GameState getGameState() {
+		return _gameState;
 	}
 	
-	public void getMoveHistory() {
+	public String getMoveHistory() {
+		
+		StringBuilder sb = new StringBuilder();
 		
 		for(Move m : _moves) {
-			System.out.println(new StringBuilder().append(m.toString()).append(" ").append(m.madeBy().toString()).toString());
+			sb.append(m.toString()).append(" ").append(m.madeBy().toString()).append(Constants.NEWLINE);
 		}
+		
+		return sb.toString();
 	}
-	
 	
 	@Override
 	public String toString(){
@@ -172,4 +152,8 @@ public class Player {
 		return _playerCount;
 	}
 	
+
+	public static int getNumberOfMoves() {
+		return _currentNumOfMovesForAllPlayersInGame;
+	}
 }

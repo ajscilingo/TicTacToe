@@ -1,8 +1,7 @@
 package scilingo.net.board.state;
 
-import scilingo.net.board.Player;
-
-public interface WinningState {
+public interface GameState {
 	
-	public String wonBy();
+	public String printState();
+	public String printMoves();
 }

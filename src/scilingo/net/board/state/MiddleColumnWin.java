@@ -2,16 +2,14 @@ package scilingo.net.board.state;
 
 import scilingo.net.board.Player;
 
-public class MiddleColumnWin implements WinningState {
+public class MiddleColumnWin extends AbstractGameState {
 
-	private Player _player;
-	
 	public MiddleColumnWin(Player player) {
 		this._player = player;
 	}
 	
 	@Override
-	public String wonBy() {
+	public String printState() {
 		return new StringBuilder().append("Middle Column Win By ").append(_player.toString()).toString();
 	}
 
