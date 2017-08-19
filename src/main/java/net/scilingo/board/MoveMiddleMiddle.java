@@ -4,16 +4,18 @@ public class MoveMiddleMiddle implements Move {
 
 	private final Board _gameBoard;
 	private final Player _player;
+	private final boolean _gameOver;
 	
-	public MoveMiddleMiddle(Board board, Player player){
+	public MoveMiddleMiddle(Board board, Player player, boolean gameOver){
 		this._gameBoard = board;
 		this._player = player;
+		this._gameOver = gameOver;
 	}
 	
 	@Override
 	public boolean move() {
 		
-		if(this._gameBoard.canMove(Row.MIDDLE, Column.MIDDLE)){
+		if(this._gameBoard.canMove(Row.MIDDLE, Column.MIDDLE, _gameOver)){
 			this._gameBoard.placeMove(this._player.move(this), Row.MIDDLE, Column.MIDDLE);
 			return true;
 		}

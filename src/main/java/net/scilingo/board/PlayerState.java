@@ -6,11 +6,9 @@ public class PlayerState {
 
 	static GameState determineState(Player player) {
 
-		// Check For Tie
-		if(Player.getNumberOfMoves() > 8)
-			return new TiedGame(player);
+		
 		// Top Row Win
-		else if(player.hasUpperLeft() && player.hasUpperMiddle() && player.hasUpperRight())
+		if(player.hasUpperLeft() && player.hasUpperMiddle() && player.hasUpperRight())
 			return new TopRowWin(player);
 		// Middle Row Win
 		else if(player.hasMiddleLeft() && player.hasMiddleMiddle() && player.hasMiddleRight())
@@ -33,6 +31,9 @@ public class PlayerState {
 		// Left Diagonal Win
 		else if(player.hasLowerLeft() && player.hasMiddleMiddle() && player.hasUpperRight()) 
 			return new LeftDiagonalWin(player);
+		// Tied Game
+		else if(Player.getNumberOfMoves() > 8)
+			return new TiedGame(player);
 		// No Win
 		else
 			return null;

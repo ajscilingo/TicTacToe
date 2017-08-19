@@ -1,5 +1,6 @@
 package net.scilingo.board.state;
 
+import net.scilingo.board.Constants;
 import net.scilingo.board.Player;
 
 public class LeftColumnWin extends AbstractGameState {
@@ -10,7 +11,9 @@ public class LeftColumnWin extends AbstractGameState {
 	
 	@Override
 	public String printState() {
-		return new StringBuilder().append("Left Column Win By ").append(_player.toString()).toString();
+		return new StringBuilder().append("Left Column Win By ").append(_player.toString())
+				.append(Constants.NEWLINE).append(super.printMoves()).toString();
+		
 	}
 
 }

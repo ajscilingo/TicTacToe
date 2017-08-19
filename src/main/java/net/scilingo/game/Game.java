@@ -1,8 +1,10 @@
 package net.scilingo.game;
 
 import java.util.Scanner;
+import java.util.concurrent.CancellationException;
 
 import net.scilingo.board.*;
+import net.scilingo.board.state.TiedGame;
 
 class Game {
 
@@ -13,14 +15,14 @@ class Game {
 	protected Board _gameBoard;
 	
 	public Game(){
-		_player1 = new Player(Constants.X_SYMBOL);
-		_player2 = new Player(Constants.O_SYMBOL);
+		_player1 = GameFactory.generatePlayerOne();
+		_player2 = GameFactory.generatePlayerTwo();
 		_gameOver = false;
-		_gameBoard = new Board();
+		_gameBoard = GameFactory.generateBoard();
+		_currentPlayer = _player1;
 	}
 	
-	
-	private Player getCurrentPlayer(){
+	public Player getCurrentPlayer(){
 		if(_currentPlayer == null)
 			return _player1;
 		
@@ -34,35 +36,36 @@ class Game {
 		
 		Scanner sc = new Scanner(System.in);
 		
-		while(!_gameOver){
-			// set the current player
-			_currentPlayer = getCurrentPlayer();
+		while(!isGameOver()){
 			showMenu();
+			
 			try {
-				makeMove(sc.nextInt());
+				makeMove(Cell.values()[sc.nextInt()]);
 			}
 			catch(Exception e){
 				// prevent user from changing on exception
 				_currentPlayer = getCurrentPlayer();
 				sc.nextLine();
 			}
-			showBoard();
-			checkForWinOrTie();
 		}
-		
+		if(playAgain(sc))
+			new Game().play();
 		sc.close();
 	}
 	
-	private void checkForWinOrTie(){
+	public void checkForWinOrTie(){
 	
 		if(_currentPlayer.isGameOver()){
-			System.out.println(_currentPlayer.getGameState().printState());
-			if(_currentPlayer.getGameState().printMoves() != null)
-				System.out.println(_currentPlayer.getGameState().printMoves());
+			System.out.println(Player.getGameState().printState());
 			_gameOver =  true;		
 		}
 			
 	}
+	
+	public boolean isGameOver() {
+		return _gameOver;
+	}
+	
 	
 	private void showBoard(){
 		
@@ -81,58 +84,90 @@ class Game {
 		.append(" Make move #")
 		.append(Player.getNumberOfMoves() + 1)
 		.append(Constants.NEWLINE)
-		.append("1.) Move To Upper Left")
+		.append(Cell.UPPER_LEFT.ordinal()).append(".) Move To Upper Left")
 		.append(Constants.NEWLINE)
-		.append("2.) Move To Upper Center")
+		.append(Cell.UPPER_MIDDLE.ordinal()).append(".) Move To Upper Center")
 		.append(Constants.NEWLINE)
-		.append("3.) Move To Upper Right")
+		.append(Cell.UPPER_RIGHT.ordinal()).append(".) Move To Upper Right")
 		.append(Constants.NEWLINE)
-		.append("4.) Move To Center Left")
+		.append(Cell.MIDDLE_LEFT.ordinal()).append(".) Move To Center Left")
 		.append(Constants.NEWLINE)
-		.append("5.) Move To Center")
+		.append(Cell.MIDDLE_MIDDLE.ordinal()).append(".) Move To Center")
 		.append(Constants.NEWLINE)
-		.append("6.) Move To Center Right")
+		.append(Cell.MIDDLE_RIGHT.ordinal()).append(".) Move To Center Right")
 		.append(Constants.NEWLINE)
-		.append("7.) Move To Lower Left")
+		.append(Cell.LOWER_LEFT.ordinal()).append(".) Move To Lower Left")
 		.append(Constants.NEWLINE)
-		.append("8.) Move To Lower Center")
+		.append(Cell.LOWER_MIDDLE.ordinal()).append(".) Move To Lower Center")
 		.append(Constants.NEWLINE)
-		.append("9.) Move To Lower Right")
+		.append(Cell.LOWER_RIGHT.ordinal()).append(".) Move To Lower Right")
 		.append(Constants.NEWLINE)
 		.toString());
 	}
 	
-	public void makeMove(int m){
-		switch (m) {
-			case 1: 
-				new MoveUpperLeft(this._gameBoard, this._currentPlayer).move();
-				break;
-			case 2: 
-				new MoveUpperMiddle(this._gameBoard, this._currentPlayer).move();	
-				break;
-			case 3: 
-				new MoveUpperRight(this._gameBoard, this._currentPlayer).move();
-				break;
-			case 4: 
-				new MoveMiddleLeft(this._gameBoard, this._currentPlayer).move();
-				break;
-			case 5: 
-				new MoveMiddleMiddle(this._gameBoard, this._currentPlayer).move();
-				break;
-			case 6: 
-				new MoveMiddleRight(this._gameBoard, this._currentPlayer).move();
-				break;
-			case 7: 
-				new MoveLowerLeft(this._gameBoard, this._currentPlayer).move();
-				break;
-			case 8: 
-				new MoveLowerMiddle(this._gameBoard, this._currentPlayer).move();
-				break;
-			case 9: 
-				new MoveLowerRight(this._gameBoard, this._currentPlayer).move();
-				break;
-			default:
-				break;
+	public boolean playAgain(Scanner sc) {
+		System.out.println(Constants.PLAY_AGAIN_MSG);
+		String response = sc.next().toUpperCase();
+		
+		boolean stopLooping = ( Constants.YES.equals(response) || Constants.Y.equals(response) || Constants.N.equals(response) || Constants.NO.equals(response) );
+		
+		while(!stopLooping) {
+			System.out.println(Constants.PLAY_AGAIN_MSG);
+			response = sc.next().toUpperCase();
+			stopLooping = ( Constants.YES.equals(response) || Constants.Y.equals(response) || Constants.N.equals(response) || Constants.NO.equals(response) );
 		}
+		
+		if(Constants.YES.equals(response) || Constants.Y.equals(response))
+			return true;
+		else 
+			return false;
+			
+	}
+	
+	public boolean makeMove(Cell m){
+		
+		boolean moveSuccess = false;
+		
+		if(!_gameOver) {
+			
+			switch (m) {
+				case UPPER_LEFT:
+					moveSuccess = new MoveUpperLeft(this._gameBoard, this._currentPlayer, this._gameOver).move();
+					break;
+				case UPPER_MIDDLE: 
+					moveSuccess = new MoveUpperMiddle(this._gameBoard, this._currentPlayer, this._gameOver).move();	
+					break;
+				case UPPER_RIGHT: 
+					moveSuccess = new MoveUpperRight(this._gameBoard, this._currentPlayer, this._gameOver).move();
+					break;
+				case MIDDLE_LEFT: 
+					moveSuccess = new MoveMiddleLeft(this._gameBoard, this._currentPlayer, this._gameOver).move();
+					break;
+				case MIDDLE_MIDDLE: 
+					moveSuccess = new MoveMiddleMiddle(this._gameBoard, this._currentPlayer, this._gameOver).move();
+					break;
+				case MIDDLE_RIGHT: 
+					moveSuccess = new MoveMiddleRight(this._gameBoard, this._currentPlayer, this._gameOver).move();
+					break;
+				case LOWER_LEFT: 
+					moveSuccess = new MoveLowerLeft(this._gameBoard, this._currentPlayer, this._gameOver).move();
+					break;
+				case LOWER_MIDDLE: 
+					moveSuccess = new MoveLowerMiddle(this._gameBoard, this._currentPlayer, this._gameOver).move();
+					break;
+				case LOWER_RIGHT: 
+					moveSuccess = new MoveLowerRight(this._gameBoard, this._currentPlayer, this._gameOver).move();
+					break;
+				default:
+					break;
+			}
+			
+			if(moveSuccess) {
+				showBoard();
+				checkForWinOrTie();
+			}
+			_currentPlayer = getCurrentPlayer();
+		}
+		return moveSuccess;
 	}
 }
