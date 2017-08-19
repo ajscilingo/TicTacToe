@@ -4,16 +4,18 @@ public class MoveLowerRight implements Move {
 
 	private final Board _gameBoard;
 	private final Player _player;
+	private final boolean _gameOver;
 	
-	public MoveLowerRight(Board board, Player player) {
+	public MoveLowerRight(Board board, Player player, boolean gameOver) {
 		this._gameBoard = board;
 		this._player = player;
+		this._gameOver = gameOver;
 	}
 	
 	@Override
 	public boolean move() {
 		
-		if(this._gameBoard.canMove(Row.LOWER, Column.RIGHT)){
+		if(this._gameBoard.canMove(Row.LOWER, Column.RIGHT, _gameOver)){
 			this._gameBoard.placeMove(this._player.move(this), Row.LOWER, Column.RIGHT);
 			return true;
 		}

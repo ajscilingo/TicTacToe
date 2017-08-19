@@ -2,16 +2,59 @@ package net.scilingo.board;
 
 public class Board {
 
-	protected char [][] _gameBoard;
+	private final char [][] _gameBoard;
 	private static int rows = 3;
 	private static int cols = 3;
 	
-	public Board(){
+	private static final int UpperRow = Row.UPPER.ordinal();
+	private static final int MiddleRow = Row.MIDDLE.ordinal();
+	private static final int LowerRow = Row.LOWER.ordinal();
+	
+	private static final int LeftColumn = Column.LEFT.ordinal();
+	private static final int MiddleColumn = Column.MIDDLE.ordinal();
+	private static final int RightColumn = Column.RIGHT.ordinal();
+	
+	Board(){
 		_gameBoard = new char[rows][cols];
 		clearBoard();
-		
+	}
+	
+	public final char getUpperLeftCell() {
+		return _gameBoard[UpperRow][LeftColumn];
+	}
+	
+	public final char getUpperMiddleCell() {
+		return _gameBoard[UpperRow][MiddleColumn];
+	}
+	
+	public final char getUpperRightCell() {
+		return _gameBoard[UpperRow][RightColumn];
+	}
+	
+	public final char getMiddleLeftCell() {
+		return _gameBoard[MiddleRow][LeftColumn];
+	}
+	
+	public final char getMiddleMiddleCell() {
+		return _gameBoard[MiddleRow][MiddleColumn];
+	}
+	
+	public final char getMiddleRightCell() {
+		return _gameBoard[MiddleRow][RightColumn];
 	}
 
+	public final char getLowerLeftCell() {
+		return _gameBoard[LowerRow][LeftColumn];
+	}
+	
+	public final char getLowerMiddleCell() {
+		return _gameBoard[LowerRow][MiddleColumn];
+	}
+	
+	public final char getLowerRightCell() {
+		return _gameBoard[LowerRow][RightColumn];
+	}
+	
 	protected void clearBoard(){
 		for(int row=0; row<3; row++){
 			for(int col=0; col<3; col++){
@@ -28,11 +71,11 @@ public class Board {
 		_gameBoard[row][col] = playerMove;
 	}
 	
-	protected boolean canMove(Row r, Column c){
+	protected boolean canMove(Row r, Column c, boolean gameOver){
 		int row = r.ordinal();
 		int col = c.ordinal();
 		
-		if(_gameBoard[row][col] == Constants.UNOCCUPIED_SPACE)
+		if(_gameBoard[row][col] == Constants.UNOCCUPIED_SPACE && gameOver == false)
 			return true;
 		return false;
 	}
@@ -41,14 +84,6 @@ public class Board {
 	public String toString(){
 		
 		StringBuilder sb = new StringBuilder();
-		
-		int UpperRow = Row.UPPER.ordinal();
-		int MiddleRow = Row.MIDDLE.ordinal();
-		int LowerRow = Row.LOWER.ordinal();
-		
-		int LeftColumn = Column.LEFT.ordinal();
-		int MiddleColumn = Column.MIDDLE.ordinal();
-		int RightColumn = Column.RIGHT.ordinal();
 		
 		return sb
 		.append(_gameBoard[UpperRow][LeftColumn])

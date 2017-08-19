@@ -12,10 +12,5 @@ public class TiedGame extends AbstractGameState {
 	public String printState() {
 		return new StringBuilder().append("Tied Game!").toString();
 	}
-
-	@Override
-	public String printMoves() {
-		return null;
-	}
 	
 }
