@@ -10,7 +10,7 @@ public class BottomRowWin extends AbstractGameState {
 	}
 	
 	@Override
-	public String printState() {
+	public String toString() {
 		return new StringBuilder().append("Bottom Row Win By ").append(_player.toString())
 				.append(Constants.NEWLINE).append(super.printMoves()).toString();
 	}

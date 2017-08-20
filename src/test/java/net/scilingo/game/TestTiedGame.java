@@ -18,7 +18,7 @@ private static Game ticTacToeGame;
 	
 	@BeforeClass
 	public static void setup() {
-		ticTacToeGame = new Game();
+		ticTacToeGame = new TicTacToeGame();
 	}
 	
 	@AfterClass
@@ -31,40 +31,40 @@ private static Game ticTacToeGame;
 	public void TestTiedGameOutcome() {
 		
 		ticTacToeGame.makeMove(Cell.UPPER_LEFT);
-		assertNotEquals(Constants.UNOCCUPIED_SPACE, ticTacToeGame._gameBoard.getUpperLeftCell());
-		assertEquals(Constants.X_SYMBOL, ticTacToeGame._gameBoard.getUpperLeftCell());
+		assertNotEquals(Constants.UNOCCUPIED_SPACE, ticTacToeGame.getGameBoard().getUpperLeftCell());
+		assertEquals(Constants.X_SYMBOL, ticTacToeGame.getGameBoard().getUpperLeftCell());
 		
 		ticTacToeGame.makeMove(Cell.UPPER_MIDDLE);
-		assertNotEquals(Constants.UNOCCUPIED_SPACE, ticTacToeGame._gameBoard.getUpperMiddleCell());
-		assertEquals(Constants.O_SYMBOL, ticTacToeGame._gameBoard.getUpperMiddleCell());
+		assertNotEquals(Constants.UNOCCUPIED_SPACE, ticTacToeGame.getGameBoard().getUpperMiddleCell());
+		assertEquals(Constants.O_SYMBOL, ticTacToeGame.getGameBoard().getUpperMiddleCell());
 		
 		ticTacToeGame.makeMove(Cell.UPPER_RIGHT);
-		assertNotEquals(Constants.UNOCCUPIED_SPACE, ticTacToeGame._gameBoard.getUpperRightCell());
-		assertEquals(Constants.X_SYMBOL, ticTacToeGame._gameBoard.getUpperRightCell());
+		assertNotEquals(Constants.UNOCCUPIED_SPACE, ticTacToeGame.getGameBoard().getUpperRightCell());
+		assertEquals(Constants.X_SYMBOL, ticTacToeGame.getGameBoard().getUpperRightCell());
 		
 		ticTacToeGame.makeMove(Cell.MIDDLE_MIDDLE);
-		assertNotEquals(Constants.UNOCCUPIED_SPACE, ticTacToeGame._gameBoard.getMiddleMiddleCell());
-		assertEquals(Constants.O_SYMBOL, ticTacToeGame._gameBoard.getMiddleMiddleCell());
+		assertNotEquals(Constants.UNOCCUPIED_SPACE, ticTacToeGame.getGameBoard().getMiddleMiddleCell());
+		assertEquals(Constants.O_SYMBOL, ticTacToeGame.getGameBoard().getMiddleMiddleCell());
 		
 		ticTacToeGame.makeMove(Cell.MIDDLE_LEFT);
-		assertNotEquals(Constants.UNOCCUPIED_SPACE, ticTacToeGame._gameBoard.getMiddleLeftCell());
-		assertEquals(Constants.X_SYMBOL, ticTacToeGame._gameBoard.getMiddleLeftCell());
+		assertNotEquals(Constants.UNOCCUPIED_SPACE, ticTacToeGame.getGameBoard().getMiddleLeftCell());
+		assertEquals(Constants.X_SYMBOL, ticTacToeGame.getGameBoard().getMiddleLeftCell());
 		
 		ticTacToeGame.makeMove(Cell.MIDDLE_RIGHT);
-		assertNotEquals(Constants.UNOCCUPIED_SPACE, ticTacToeGame._gameBoard.getMiddleRightCell());
-		assertEquals(Constants.O_SYMBOL, ticTacToeGame._gameBoard.getMiddleRightCell());
+		assertNotEquals(Constants.UNOCCUPIED_SPACE, ticTacToeGame.getGameBoard().getMiddleRightCell());
+		assertEquals(Constants.O_SYMBOL, ticTacToeGame.getGameBoard().getMiddleRightCell());
 		
 		ticTacToeGame.makeMove(Cell.LOWER_MIDDLE);
-		assertNotEquals(Constants.UNOCCUPIED_SPACE, ticTacToeGame._gameBoard.getLowerMiddleCell());
-		assertEquals(Constants.X_SYMBOL, ticTacToeGame._gameBoard.getLowerMiddleCell());
+		assertNotEquals(Constants.UNOCCUPIED_SPACE, ticTacToeGame.getGameBoard().getLowerMiddleCell());
+		assertEquals(Constants.X_SYMBOL, ticTacToeGame.getGameBoard().getLowerMiddleCell());
 		
 		ticTacToeGame.makeMove(Cell.LOWER_LEFT);
-		assertNotEquals(Constants.UNOCCUPIED_SPACE, ticTacToeGame._gameBoard.getLowerLeftCell());
-		assertEquals(Constants.O_SYMBOL, ticTacToeGame._gameBoard.getLowerLeftCell());
+		assertNotEquals(Constants.UNOCCUPIED_SPACE, ticTacToeGame.getGameBoard().getLowerLeftCell());
+		assertEquals(Constants.O_SYMBOL, ticTacToeGame.getGameBoard().getLowerLeftCell());
 		
 		ticTacToeGame.makeMove(Cell.LOWER_RIGHT);
-		assertNotEquals(Constants.UNOCCUPIED_SPACE, ticTacToeGame._gameBoard.getLowerRightCell());
-		assertEquals(Constants.X_SYMBOL, ticTacToeGame._gameBoard.getLowerRightCell());
+		assertNotEquals(Constants.UNOCCUPIED_SPACE, ticTacToeGame.getGameBoard().getLowerRightCell());
+		assertEquals(Constants.X_SYMBOL, ticTacToeGame.getGameBoard().getLowerRightCell());
 		
 	}
 	

@@ -10,7 +10,7 @@ public class MiddleColumnWin extends AbstractGameState {
 	}
 	
 	@Override
-	public String printState() {
+	public String toString() {
 		return new StringBuilder().append("Middle Column Win By ").append(_player.toString())
 				.append(Constants.NEWLINE).append(super.printMoves()).toString();
 	}

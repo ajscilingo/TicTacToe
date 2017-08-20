@@ -9,7 +9,7 @@ public class TiedGame extends AbstractGameState {
 	}
 	
 	@Override
-	public String printState() {
+	public String toString() {
 		return new StringBuilder().append("Tied Game!").toString();
 	}
 	
