@@ -1,7 +1,7 @@
 package net.scilingo.game.tictactoe.state;
 
+import net.scilingo.board.Constants;
 import net.scilingo.board.Player;
-import net.scilingo.board.tictactoe.Constants;
 
 public class MiddleColumnWin extends AbstractGameState {
 

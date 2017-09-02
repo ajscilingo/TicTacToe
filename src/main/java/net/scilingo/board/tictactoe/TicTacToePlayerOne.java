@@ -1,5 +1,7 @@
 package net.scilingo.board.tictactoe;
 
+import net.scilingo.board.Constants;
+
 class TicTacToePlayerOne extends TicTacToePlayer {
 	
 	TicTacToePlayerOne(){

@@ -1,6 +1,7 @@
 package net.scilingo.board.tictactoe;
 
 import net.scilingo.board.AbstractGameBoard;
+import net.scilingo.board.Constants;
 
 public class TicTacToeGameBoard extends AbstractGameBoard {
 	

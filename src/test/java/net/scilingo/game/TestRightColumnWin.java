@@ -7,8 +7,8 @@ import org.junit.AfterClass;
 import org.junit.BeforeClass;
 import org.junit.Test;
 
+import net.scilingo.board.Constants;
 import net.scilingo.board.tictactoe.TicTacToeCellSelection;
-import net.scilingo.board.tictactoe.Constants;
 import net.scilingo.board.tictactoe.TicTacToePlayer;
 import net.scilingo.board.tictactoe.TicTacToeGameBoard;
 
