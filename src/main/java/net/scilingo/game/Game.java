@@ -2,9 +2,9 @@ package net.scilingo.game;
 
 import java.util.Scanner;
 
-import net.scilingo.board.Cell;
-import net.scilingo.board.Player;
 import net.scilingo.board.Board;
+import net.scilingo.board.Player;
+import net.scilingo.board.CellSelection;
 
 interface Game {
 
@@ -14,12 +14,12 @@ interface Game {
 	
 	void play();
 
-	void checkForWinOrTie();
+	void checkForWin();
 
 	boolean isGameOver();
 
 	boolean playAgain(Scanner sc);
 
-	boolean makeMove(Cell m);
+	boolean makeMove(CellSelection cellSelection);
 
 }

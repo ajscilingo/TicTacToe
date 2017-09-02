@@ -7,61 +7,64 @@ import org.junit.AfterClass;
 import org.junit.BeforeClass;
 import org.junit.Test;
 
-import net.scilingo.board.Cell;
-import net.scilingo.board.Constants;
-import net.scilingo.board.Player;
+import net.scilingo.board.tictactoe.TicTacToeCellSelection;
+import net.scilingo.board.tictactoe.Constants;
+import net.scilingo.board.tictactoe.TicTacToePlayer;
+import net.scilingo.board.tictactoe.TicTacToeGameBoard;
 
 public class TestRightDiagonalWin {
 
-private static Game ticTacToeGame;
+	private static Game ticTacToeGame;
+	private static TicTacToeGameBoard ticTacToeGameBoard;
 	
 	@BeforeClass
 	public static void setup() {
 		ticTacToeGame = new TicTacToeGame();
+		ticTacToeGameBoard = (TicTacToeGameBoard) ticTacToeGame.getGameBoard();
 	}
 	
 	@AfterClass
 	public static void after() {
-		assertEquals(net.scilingo.board.state.RightDiagonalWin.class,  Player.getGameState().getClass());
+		assertEquals(net.scilingo.game.tictactoe.state.RightDiagonalWin.class,  TicTacToePlayer.getGameState().getClass());
 	}
 	
 	@Test
 	public void TestMakeMoveUpperLeft() {
 		
-		ticTacToeGame.makeMove(Cell.UPPER_LEFT);
-		assertNotEquals(Constants.UNOCCUPIED_SPACE, ticTacToeGame.getGameBoard().getUpperLeftCell());
-		assertEquals(Constants.X_SYMBOL, ticTacToeGame.getGameBoard().getUpperLeftCell());
+		ticTacToeGame.makeMove(TicTacToeCellSelection.UPPER_LEFT);
+		assertNotEquals(Constants.UNOCCUPIED_SPACE, ticTacToeGameBoard.getUpperLeftCell());
+		assertEquals(Constants.X_SYMBOL, ticTacToeGameBoard.getUpperLeftCell());
 		
 		// Repeat the action to prevent other player from making a conflicting move
-		ticTacToeGame.makeMove(Cell.UPPER_LEFT);
-		assertNotEquals(Constants.UNOCCUPIED_SPACE, ticTacToeGame.getGameBoard().getUpperLeftCell());
-		assertEquals(Constants.X_SYMBOL, ticTacToeGame.getGameBoard().getUpperLeftCell());
+		ticTacToeGame.makeMove(TicTacToeCellSelection.UPPER_LEFT);
+		assertNotEquals(Constants.UNOCCUPIED_SPACE, ticTacToeGameBoard.getUpperLeftCell());
+		assertEquals(Constants.X_SYMBOL, ticTacToeGameBoard.getUpperLeftCell());
 	}
 	
 	@Test
 	public void TestMakeMoveMiddleMiddle() {
 		
-		ticTacToeGame.makeMove(Cell.MIDDLE_MIDDLE);
-		assertNotEquals(Constants.UNOCCUPIED_SPACE, ticTacToeGame.getGameBoard().getMiddleMiddleCell());
-		assertEquals(Constants.X_SYMBOL, ticTacToeGame.getGameBoard().getMiddleMiddleCell());
+		ticTacToeGame.makeMove(TicTacToeCellSelection.MIDDLE_MIDDLE);
+		assertNotEquals(Constants.UNOCCUPIED_SPACE, ticTacToeGameBoard.getMiddleMiddleCell());
+		assertEquals(Constants.X_SYMBOL, ticTacToeGameBoard.getMiddleMiddleCell());
 		
 		// Repeat the action to prevent other player from making a conflicting move
-		ticTacToeGame.makeMove(Cell.MIDDLE_MIDDLE);
-		assertNotEquals(Constants.UNOCCUPIED_SPACE, ticTacToeGame.getGameBoard().getMiddleMiddleCell());
-		assertEquals(Constants.X_SYMBOL, ticTacToeGame.getGameBoard().getMiddleMiddleCell());
+		ticTacToeGame.makeMove(TicTacToeCellSelection.MIDDLE_MIDDLE);
+		assertNotEquals(Constants.UNOCCUPIED_SPACE, ticTacToeGameBoard.getMiddleMiddleCell());
+		assertEquals(Constants.X_SYMBOL, ticTacToeGameBoard.getMiddleMiddleCell());
 	}
 	
 	@Test
 	public void TestMakeMoveLowerRight() {
 		
-		ticTacToeGame.makeMove(Cell.LOWER_RIGHT);
-		assertNotEquals(Constants.UNOCCUPIED_SPACE, ticTacToeGame.getGameBoard().getLowerRightCell());
-		assertEquals(Constants.X_SYMBOL, ticTacToeGame.getGameBoard().getLowerRightCell());
+		ticTacToeGame.makeMove(TicTacToeCellSelection.LOWER_RIGHT);
+		assertNotEquals(Constants.UNOCCUPIED_SPACE, ticTacToeGameBoard.getLowerRightCell());
+		assertEquals(Constants.X_SYMBOL, ticTacToeGameBoard.getLowerRightCell());
 		
 		// Repeat the action to prevent other player from making a conflicting move
-		ticTacToeGame.makeMove(Cell.LOWER_RIGHT);
-		assertNotEquals(Constants.UNOCCUPIED_SPACE, ticTacToeGame.getGameBoard().getLowerRightCell());
-		assertEquals(Constants.X_SYMBOL, ticTacToeGame.getGameBoard().getLowerRightCell());
+		ticTacToeGame.makeMove(TicTacToeCellSelection.LOWER_RIGHT);
+		assertNotEquals(Constants.UNOCCUPIED_SPACE, ticTacToeGameBoard.getLowerRightCell());
+		assertEquals(Constants.X_SYMBOL, ticTacToeGameBoard.getLowerRightCell());
 	}
 	
 }

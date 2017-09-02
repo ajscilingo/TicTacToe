@@ -1,7 +1,7 @@
-package net.scilingo.board.state;
+package net.scilingo.game.tictactoe.state;
 
-import net.scilingo.board.Constants;
 import net.scilingo.board.Player;
+import net.scilingo.board.tictactoe.Constants;
 
 public class RightDiagonalWin extends AbstractGameState {
 

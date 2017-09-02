@@ -1,7 +1,7 @@
 /**
  * 
  */
-package net.scilingo.board;
+package net.scilingo.board.tictactoe;
 
 /**
  * @author ajscilingo

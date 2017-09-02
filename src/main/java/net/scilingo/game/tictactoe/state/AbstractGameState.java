@@ -1,4 +1,4 @@
-package net.scilingo.board.state;
+package net.scilingo.game.tictactoe.state;
 
 import net.scilingo.board.Player;
 

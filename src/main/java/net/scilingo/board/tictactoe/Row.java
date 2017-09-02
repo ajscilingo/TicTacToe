@@ -1,4 +1,4 @@
-package net.scilingo.board;
+package net.scilingo.board.tictactoe;
 
 public enum Row {
 	UPPER, MIDDLE, LOWER

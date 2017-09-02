@@ -1,7 +1,9 @@
 package net.scilingo.game;
 
 import java.util.Scanner;
+
 import net.scilingo.board.*;
+import net.scilingo.board.tictactoe.*;
 
 class TicTacToeGame implements Game {
 
@@ -9,13 +11,13 @@ class TicTacToeGame implements Game {
 	protected Player _currentPlayer;
 	protected Player _player1;
 	protected Player _player2;
-	protected Board _gameBoard;
+	protected TicTacToeGameBoard _gameBoard;
 	
 	public TicTacToeGame(){
-		_player1 = GameFactory.generatePlayerOne();
-		_player2 = GameFactory.generatePlayerTwo();
+		_player1 = TicTacToeGameFactory.generatePlayerOne();
+		_player2 = TicTacToeGameFactory.generatePlayerTwo();
 		_gameOver = false;
-		_gameBoard = GameFactory.generateBoard();
+		_gameBoard = TicTacToeGameFactory.generateGameBoard();
 		_currentPlayer = _player1;
 	}
 	
@@ -45,7 +47,7 @@ class TicTacToeGame implements Game {
 			showMenu();
 			
 			try {
-				makeMove(Cell.values()[sc.nextInt()]);
+				makeMove(TicTacToeCellSelection.values()[sc.nextInt()]);
 			}
 			catch(Exception e){
 				// prevent user from changing on exception
@@ -62,10 +64,10 @@ class TicTacToeGame implements Game {
 	 * @see net.scilingo.game.Game#checkForWinOrTie()
 	 */
 	@Override
-	public void checkForWinOrTie(){
+	public void checkForWin(){
 	
 		if(_currentPlayer.isGameOver()){
-			System.out.println(Player.getGameState());
+			System.out.println(TicTacToePlayer.getGameState());
 			_gameOver =  true;		
 		}
 			
@@ -95,25 +97,25 @@ class TicTacToeGame implements Game {
 		System.out.print(sb
 		.append(_currentPlayer)
 		.append(" Make move #")
-		.append(Player.getNumberOfMoves() + 1)
+		.append(TicTacToePlayer.getNumberOfMoves() + 1)
 		.append(Constants.NEWLINE)
-		.append(Cell.UPPER_LEFT.ordinal()).append(".) Move To Upper Left")
+		.append(TicTacToeCellSelection.UPPER_LEFT.ordinal()).append(".) Move To Upper Left")
 		.append(Constants.NEWLINE)
-		.append(Cell.UPPER_MIDDLE.ordinal()).append(".) Move To Upper Center")
+		.append(TicTacToeCellSelection.UPPER_MIDDLE.ordinal()).append(".) Move To Upper Center")
 		.append(Constants.NEWLINE)
-		.append(Cell.UPPER_RIGHT.ordinal()).append(".) Move To Upper Right")
+		.append(TicTacToeCellSelection.UPPER_RIGHT.ordinal()).append(".) Move To Upper Right")
 		.append(Constants.NEWLINE)
-		.append(Cell.MIDDLE_LEFT.ordinal()).append(".) Move To Center Left")
+		.append(TicTacToeCellSelection.MIDDLE_LEFT.ordinal()).append(".) Move To Center Left")
 		.append(Constants.NEWLINE)
-		.append(Cell.MIDDLE_MIDDLE.ordinal()).append(".) Move To Center")
+		.append(TicTacToeCellSelection.MIDDLE_MIDDLE.ordinal()).append(".) Move To Center")
 		.append(Constants.NEWLINE)
-		.append(Cell.MIDDLE_RIGHT.ordinal()).append(".) Move To Center Right")
+		.append(TicTacToeCellSelection.MIDDLE_RIGHT.ordinal()).append(".) Move To Center Right")
 		.append(Constants.NEWLINE)
-		.append(Cell.LOWER_LEFT.ordinal()).append(".) Move To Lower Left")
+		.append(TicTacToeCellSelection.LOWER_LEFT.ordinal()).append(".) Move To Lower Left")
 		.append(Constants.NEWLINE)
-		.append(Cell.LOWER_MIDDLE.ordinal()).append(".) Move To Lower Center")
+		.append(TicTacToeCellSelection.LOWER_MIDDLE.ordinal()).append(".) Move To Lower Center")
 		.append(Constants.NEWLINE)
-		.append(Cell.LOWER_RIGHT.ordinal()).append(".) Move To Lower Right")
+		.append(TicTacToeCellSelection.LOWER_RIGHT.ordinal()).append(".) Move To Lower Right")
 		.append(Constants.NEWLINE)
 		.toString());
 	}
@@ -145,39 +147,41 @@ class TicTacToeGame implements Game {
 	 * @see net.scilingo.game.Game#makeMove(net.scilingo.board.Cell)
 	 */
 	@Override
-	public boolean makeMove(Cell m){
+	public boolean makeMove(CellSelection cellSelection){
 		
 		boolean moveSuccess = false;
 		
+		TicTacToeCellSelection ticTacToeCellSelection = (TicTacToeCellSelection) cellSelection;
+		
 		if(!_gameOver) {
 			
-			switch (m) {
+			switch (ticTacToeCellSelection) {
 				case UPPER_LEFT:
-					moveSuccess = new MoveUpperLeft(this._gameBoard, this._currentPlayer, this._gameOver).move();
+					moveSuccess = new MoveUpperLeft(this._gameBoard).move(this._currentPlayer, this._gameOver);
 					break;
 				case UPPER_MIDDLE: 
-					moveSuccess = new MoveUpperMiddle(this._gameBoard, this._currentPlayer, this._gameOver).move();	
+					moveSuccess = new MoveUpperMiddle(this._gameBoard).move(this._currentPlayer, this._gameOver);	
 					break;
 				case UPPER_RIGHT: 
-					moveSuccess = new MoveUpperRight(this._gameBoard, this._currentPlayer, this._gameOver).move();
+					moveSuccess = new MoveUpperRight(this._gameBoard).move(this._currentPlayer, this._gameOver);
 					break;
 				case MIDDLE_LEFT: 
-					moveSuccess = new MoveMiddleLeft(this._gameBoard, this._currentPlayer, this._gameOver).move();
+					moveSuccess = new MoveMiddleLeft(this._gameBoard).move(this._currentPlayer, this._gameOver);
 					break;
 				case MIDDLE_MIDDLE: 
-					moveSuccess = new MoveMiddleMiddle(this._gameBoard, this._currentPlayer, this._gameOver).move();
+					moveSuccess = new MoveMiddleMiddle(this._gameBoard).move(this._currentPlayer, this._gameOver);
 					break;
 				case MIDDLE_RIGHT: 
-					moveSuccess = new MoveMiddleRight(this._gameBoard, this._currentPlayer, this._gameOver).move();
+					moveSuccess = new MoveMiddleRight(this._gameBoard).move(this._currentPlayer, this._gameOver);
 					break;
 				case LOWER_LEFT: 
-					moveSuccess = new MoveLowerLeft(this._gameBoard, this._currentPlayer, this._gameOver).move();
+					moveSuccess = new MoveLowerLeft(this._gameBoard).move(this._currentPlayer, this._gameOver);
 					break;
 				case LOWER_MIDDLE: 
-					moveSuccess = new MoveLowerMiddle(this._gameBoard, this._currentPlayer, this._gameOver).move();
+					moveSuccess = new MoveLowerMiddle(this._gameBoard).move(this._currentPlayer, this._gameOver);
 					break;
 				case LOWER_RIGHT: 
-					moveSuccess = new MoveLowerRight(this._gameBoard, this._currentPlayer, this._gameOver).move();
+					moveSuccess = new MoveLowerRight(this._gameBoard).move(this._currentPlayer, this._gameOver);
 					break;
 				default:
 					break;
@@ -185,7 +189,7 @@ class TicTacToeGame implements Game {
 			
 			if(moveSuccess) {
 				showBoard();
-				checkForWinOrTie();
+				checkForWin();
 			}
 			_currentPlayer = getCurrentPlayer();
 		}

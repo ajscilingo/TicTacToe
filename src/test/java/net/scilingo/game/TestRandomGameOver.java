@@ -8,16 +8,19 @@ import org.junit.AfterClass;
 import org.junit.BeforeClass;
 import org.junit.Test;
 
-import net.scilingo.board.Cell;
-import net.scilingo.board.Constants;
+import net.scilingo.board.tictactoe.TicTacToeCellSelection;
+import net.scilingo.board.tictactoe.Constants;
+import net.scilingo.board.tictactoe.TicTacToeGameBoard;
 
 public class TestRandomGameOver {
 
-private static Game ticTacToeGame;
+	private static Game ticTacToeGame;
+	private static TicTacToeGameBoard ticTacToeGameBoard;
 	
 	@BeforeClass
 	public static void setup() {
 		ticTacToeGame = new TicTacToeGame();
+		ticTacToeGameBoard = (TicTacToeGameBoard) ticTacToeGame.getGameBoard();
 	}
 	
 	
@@ -28,36 +31,36 @@ private static Game ticTacToeGame;
 	
 	@Test
 	public void TestMakeMoveUpperLeft() {
-		if(ticTacToeGame.makeMove(Cell.UPPER_LEFT)) {
-			assertNotEquals(Constants.UNOCCUPIED_SPACE, ticTacToeGame.getGameBoard().getUpperLeftCell());
-			assertTrue(ticTacToeGame.getGameBoard().getUpperLeftCell() == Constants.X_SYMBOL || ticTacToeGame.getGameBoard().getUpperLeftCell() == Constants.O_SYMBOL);
+		if(ticTacToeGame.makeMove(TicTacToeCellSelection.UPPER_LEFT)) {
+			assertNotEquals(Constants.UNOCCUPIED_SPACE, ticTacToeGameBoard.getUpperLeftCell());
+			assertTrue(ticTacToeGameBoard.getUpperLeftCell() == Constants.X_SYMBOL || ticTacToeGameBoard.getUpperLeftCell() == Constants.O_SYMBOL);
 		}
 		else {
-			assertEquals(Constants.UNOCCUPIED_SPACE, ticTacToeGame.getGameBoard().getUpperLeftCell());
+			assertEquals(Constants.UNOCCUPIED_SPACE, ticTacToeGameBoard.getUpperLeftCell());
 			assertTrue(ticTacToeGame.isGameOver());
 		}
 	}
 	
 	@Test
 	public void TestMakeMoveUpperMiddle() {
-		if(ticTacToeGame.makeMove(Cell.UPPER_MIDDLE)) {
-			assertNotEquals(Constants.UNOCCUPIED_SPACE, ticTacToeGame.getGameBoard().getUpperMiddleCell());
-			assertTrue(ticTacToeGame.getGameBoard().getUpperMiddleCell() == Constants.X_SYMBOL || ticTacToeGame.getGameBoard().getUpperMiddleCell() == Constants.O_SYMBOL);
+		if(ticTacToeGame.makeMove(TicTacToeCellSelection.UPPER_MIDDLE)) {
+			assertNotEquals(Constants.UNOCCUPIED_SPACE, ticTacToeGameBoard.getUpperMiddleCell());
+			assertTrue(ticTacToeGameBoard.getUpperMiddleCell() == Constants.X_SYMBOL || ticTacToeGameBoard.getUpperMiddleCell() == Constants.O_SYMBOL);
 		}
 		else {
-			assertEquals(Constants.UNOCCUPIED_SPACE, ticTacToeGame.getGameBoard().getUpperMiddleCell());
+			assertEquals(Constants.UNOCCUPIED_SPACE, ticTacToeGameBoard.getUpperMiddleCell());
 			assertTrue(ticTacToeGame.isGameOver());
 		}
 	}
 	
 	@Test
 	public void TestMakeMoveUpperRight() {
-		if(ticTacToeGame.makeMove(Cell.UPPER_RIGHT)) {
-			assertNotEquals(Constants.UNOCCUPIED_SPACE, ticTacToeGame.getGameBoard().getUpperRightCell());
-			assertTrue(ticTacToeGame.getGameBoard().getUpperRightCell() == Constants.X_SYMBOL || ticTacToeGame.getGameBoard().getUpperRightCell() == Constants.O_SYMBOL);
+		if(ticTacToeGame.makeMove(TicTacToeCellSelection.UPPER_RIGHT)) {
+			assertNotEquals(Constants.UNOCCUPIED_SPACE, ticTacToeGameBoard.getUpperRightCell());
+			assertTrue(ticTacToeGameBoard.getUpperRightCell() == Constants.X_SYMBOL || ticTacToeGameBoard.getUpperRightCell() == Constants.O_SYMBOL);
 		}
 		else {
-			assertEquals(Constants.UNOCCUPIED_SPACE, ticTacToeGame.getGameBoard().getUpperRightCell());
+			assertEquals(Constants.UNOCCUPIED_SPACE, ticTacToeGameBoard.getUpperRightCell());
 			assertTrue(ticTacToeGame.isGameOver());
 		}
 			
@@ -65,72 +68,72 @@ private static Game ticTacToeGame;
 	
 	@Test
 	public void TestMakeMoveMiddleLeft() {
-		if(ticTacToeGame.makeMove(Cell.MIDDLE_LEFT)){
-			assertNotEquals(Constants.UNOCCUPIED_SPACE, ticTacToeGame.getGameBoard().getMiddleLeftCell());
-			assertTrue(ticTacToeGame.getGameBoard().getMiddleLeftCell() == Constants.X_SYMBOL || ticTacToeGame.getGameBoard().getMiddleLeftCell() == Constants.O_SYMBOL);
+		if(ticTacToeGame.makeMove(TicTacToeCellSelection.MIDDLE_LEFT)){
+			assertNotEquals(Constants.UNOCCUPIED_SPACE, ticTacToeGameBoard.getMiddleLeftCell());
+			assertTrue(ticTacToeGameBoard.getMiddleLeftCell() == Constants.X_SYMBOL || ticTacToeGameBoard.getMiddleLeftCell() == Constants.O_SYMBOL);
 		}
 		else {
-			assertEquals(Constants.UNOCCUPIED_SPACE, ticTacToeGame.getGameBoard().getMiddleLeftCell());
+			assertEquals(Constants.UNOCCUPIED_SPACE, ticTacToeGameBoard.getMiddleLeftCell());
 			assertTrue(ticTacToeGame.isGameOver());
 		}
 	}
 	
 	@Test
 	public void TestMakeMoveMiddleMiddle() {
-		if(ticTacToeGame.makeMove(Cell.MIDDLE_MIDDLE)) {
-			assertNotEquals(Constants.UNOCCUPIED_SPACE, ticTacToeGame.getGameBoard().getMiddleMiddleCell());
-			assertTrue(ticTacToeGame.getGameBoard().getMiddleMiddleCell() == Constants.X_SYMBOL || ticTacToeGame.getGameBoard().getMiddleMiddleCell() == Constants.O_SYMBOL);
+		if(ticTacToeGame.makeMove(TicTacToeCellSelection.MIDDLE_MIDDLE)) {
+			assertNotEquals(Constants.UNOCCUPIED_SPACE, ticTacToeGameBoard.getMiddleMiddleCell());
+			assertTrue(ticTacToeGameBoard.getMiddleMiddleCell() == Constants.X_SYMBOL || ticTacToeGameBoard.getMiddleMiddleCell() == Constants.O_SYMBOL);
 		}
 		else {
-			assertEquals(Constants.UNOCCUPIED_SPACE, ticTacToeGame.getGameBoard().getMiddleMiddleCell());
+			assertEquals(Constants.UNOCCUPIED_SPACE, ticTacToeGameBoard.getMiddleMiddleCell());
 			assertTrue(ticTacToeGame.isGameOver());
 		}
 	}
 	
 	@Test
 	public void TestMakeMoveMiddleRight() {
-		if(ticTacToeGame.makeMove(Cell.MIDDLE_RIGHT)) {
-			assertNotEquals(Constants.UNOCCUPIED_SPACE, ticTacToeGame.getGameBoard().getMiddleRightCell());
-			assertTrue(ticTacToeGame.getGameBoard().getMiddleRightCell() == Constants.X_SYMBOL || ticTacToeGame.getGameBoard().getMiddleRightCell() == Constants.O_SYMBOL);
+		if(ticTacToeGame.makeMove(TicTacToeCellSelection.MIDDLE_RIGHT)) {
+			assertNotEquals(Constants.UNOCCUPIED_SPACE, ticTacToeGameBoard.getMiddleRightCell());
+			assertTrue(ticTacToeGameBoard.getMiddleRightCell() == Constants.X_SYMBOL || ticTacToeGameBoard.getMiddleRightCell() == Constants.O_SYMBOL);
 		}
 		else {
-			assertEquals(Constants.UNOCCUPIED_SPACE, ticTacToeGame.getGameBoard().getMiddleRightCell());
+			assertEquals(Constants.UNOCCUPIED_SPACE, ticTacToeGameBoard.getMiddleRightCell());
 			assertTrue(ticTacToeGame.isGameOver());
 		}
 	}
 	
 	@Test
 	public void TestMakeMoveLowerLeft() {
-		if(ticTacToeGame.makeMove(Cell.LOWER_LEFT)) {
-			assertNotEquals(Constants.UNOCCUPIED_SPACE, ticTacToeGame.getGameBoard().getLowerLeftCell());
-			assertTrue(ticTacToeGame.getGameBoard().getLowerLeftCell() == Constants.X_SYMBOL || ticTacToeGame.getGameBoard().getLowerLeftCell() == Constants.O_SYMBOL);
+		if(ticTacToeGame.makeMove(TicTacToeCellSelection.LOWER_LEFT)) {
+			assertNotEquals(Constants.UNOCCUPIED_SPACE, ticTacToeGameBoard.getLowerLeftCell());
+			assertTrue(ticTacToeGameBoard.getLowerLeftCell() == Constants.X_SYMBOL || ticTacToeGameBoard.getLowerLeftCell() == Constants.O_SYMBOL);
 		}
 		else {
-			assertEquals(Constants.UNOCCUPIED_SPACE, ticTacToeGame.getGameBoard().getLowerLeftCell());
+			assertEquals(Constants.UNOCCUPIED_SPACE, ticTacToeGameBoard.getLowerLeftCell());
 			assertTrue(ticTacToeGame.isGameOver());
 		}
 	}
 	
 	@Test
 	public void TestMakeMoveLowerMiddle() {
-		if(ticTacToeGame.makeMove(Cell.LOWER_MIDDLE)) {
-			assertNotEquals(Constants.UNOCCUPIED_SPACE, ticTacToeGame.getGameBoard().getLowerMiddleCell());
-			assertTrue(ticTacToeGame.getGameBoard().getLowerMiddleCell() == Constants.X_SYMBOL || ticTacToeGame.getGameBoard().getLowerMiddleCell() == Constants.O_SYMBOL);
+		if(ticTacToeGame.makeMove(TicTacToeCellSelection.LOWER_MIDDLE)) {
+			assertNotEquals(Constants.UNOCCUPIED_SPACE, ticTacToeGameBoard.getLowerMiddleCell());
+			assertTrue(ticTacToeGameBoard.getLowerMiddleCell() == Constants.X_SYMBOL || ticTacToeGameBoard.getLowerMiddleCell() == Constants.O_SYMBOL);
 		}
 		else {
-			assertEquals(Constants.UNOCCUPIED_SPACE, ticTacToeGame.getGameBoard().getLowerMiddleCell());
+			assertEquals(Constants.UNOCCUPIED_SPACE, ticTacToeGameBoard.getLowerMiddleCell());
 			assertTrue(ticTacToeGame.isGameOver());
 		}
 	}
 
 	@Test
 	public void TestMakeMoveLowerRight() {
-		if(ticTacToeGame.makeMove(Cell.LOWER_RIGHT)) {
-			assertNotEquals(Constants.UNOCCUPIED_SPACE, ticTacToeGame.getGameBoard().getLowerRightCell());
-			assertTrue(ticTacToeGame.getGameBoard().getLowerRightCell() == Constants.X_SYMBOL || ticTacToeGame.getGameBoard().getLowerRightCell() == Constants.O_SYMBOL);
+		if(ticTacToeGame.makeMove(TicTacToeCellSelection.LOWER_RIGHT)) {
+			assertNotEquals(Constants.UNOCCUPIED_SPACE, ticTacToeGameBoard.getLowerRightCell());
+			assertTrue(ticTacToeGameBoard.getLowerRightCell() == Constants.X_SYMBOL || ticTacToeGameBoard.getLowerRightCell() == Constants.O_SYMBOL);
 		}
 		else {
-			assertEquals(Constants.UNOCCUPIED_SPACE, ticTacToeGame.getGameBoard().getLowerRightCell());
+			assertEquals(Constants.UNOCCUPIED_SPACE, ticTacToeGameBoard.getLowerRightCell());
 			assertTrue(ticTacToeGame.isGameOver());
 		}
 	}
