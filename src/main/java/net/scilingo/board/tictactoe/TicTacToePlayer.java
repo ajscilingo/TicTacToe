@@ -27,11 +27,6 @@ public class TicTacToePlayer implements Player {
 
 	private static GameState _gameState;
 
-	// flag used to determine whether or not to resetPlayersGameState()
-	// when GameFactory creates playerOne and playerTwo
-	// Initial State is True
-	private static boolean _doesPlayersGameStateNeedToBeReset = false;
-
 	private static int _currentNumOfMovesForAllPlayersInGame;
 
 	// My Player Identifier
@@ -52,16 +47,13 @@ public class TicTacToePlayer implements Player {
 		_gameState = null;
 	}
 
-	private static void resetPlayersGameState() {
+	protected static void resetPlayersGameState() {
 
 		// Reset GameState
 		_gameState = null;
 
 		// Reset Total Number of Moves
 		_currentNumOfMovesForAllPlayersInGame = 0;
-
-		// UnSet Flag
-		_doesPlayersGameStateNeedToBeReset = false;
 		
 	}
 
@@ -163,10 +155,6 @@ public class TicTacToePlayer implements Player {
 		
 		TicTacToePlayer._gameState = TicTacToePlayerState.determineState(this);
 		
-		// check GameState again after being re-evaluated
-		if (TicTacToePlayer._gameState != null)
-			_doesPlayersGameStateNeedToBeReset = true;
-		
 		return (TicTacToePlayer._gameState != null);
 	}
 
@@ -203,12 +191,6 @@ public class TicTacToePlayer implements Player {
 	}
 
 	protected void reset() {
-
-		// first player that gets regenerated (should always be instance of TicTacToePlayerONe)
-		// resets game state
-		if(_doesPlayersGameStateNeedToBeReset) {
-			resetPlayersGameState();
-		}
 		
 		// Reset cells
 		this._upperLeft = null;
