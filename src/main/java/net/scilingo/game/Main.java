@@ -7,6 +7,9 @@ public class Main {
 		Game g = new TicTacToeGame();
 		g.play();
 		
+//		Game g = new MinesweeperGame(10,10);
+//		g.play();
+		
 		
 	}
 	
