@@ -4,8 +4,9 @@ import java.util.Scanner;
 
 import net.scilingo.board.*;
 import net.scilingo.board.tictactoe.*;
+import net.scilingo.game.tictactoe.state.GameState;
 
-class TicTacToeGame implements Game {
+public class TicTacToeGame implements Game {
 
 	private boolean _gameOver;
 	protected Player _currentPlayer;
@@ -71,6 +72,16 @@ class TicTacToeGame implements Game {
 			_gameOver =  true;		
 		}
 			
+	}
+	
+	public String getGameState(){
+		
+		GameState gameState = TicTacToePlayer.getGameState();
+		
+		if(gameState != null)
+			return gameState.toString();
+		else
+			return "";
 	}
 	
 	/* (non-Javadoc)

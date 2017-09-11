@@ -1,5 +1,7 @@
 package net.scilingo.board;
 
-public interface Board {
+import java.io.Serializable;
+
+public interface Board extends Serializable {
 
 }
