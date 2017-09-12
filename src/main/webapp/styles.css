@@ -1,0 +1,13 @@
+input[type=button], input[type=button]._ {
+	border-color: #000000;
+	width: 20px;
+}
+
+input[type=button].X {
+	background-color: #48b5ff;
+}
+
+input[type=button].O {
+	background-color: #ff2ac5;
+}
+

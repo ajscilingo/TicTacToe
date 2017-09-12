@@ -40,38 +40,40 @@ public class TicTacToeServlet extends HttpServlet{
 
     	}
     	
-    	switch(move){
-    	
-    	case "moveUpperLeft":
-    		ticTacToeGame.makeMove(TicTacToeCellSelection.UPPER_LEFT);
-    		break;
-    	case "moveUpperMiddle":
-    		ticTacToeGame.makeMove(TicTacToeCellSelection.UPPER_MIDDLE);
-    		break;
-    	case "moveUpperRight":
-    		ticTacToeGame.makeMove(TicTacToeCellSelection.UPPER_RIGHT);
-    		break;
-    	case "moveMiddleLeft":
-    		ticTacToeGame.makeMove(TicTacToeCellSelection.MIDDLE_LEFT);
-    		break;
-    	case "moveMiddleMiddle":
-    		ticTacToeGame.makeMove(TicTacToeCellSelection.MIDDLE_MIDDLE);
-			break;
-    	case "moveMiddleRight":
-    		ticTacToeGame.makeMove(TicTacToeCellSelection.MIDDLE_RIGHT);
-    		break;
-    	case "moveLowerLeft":
-    		ticTacToeGame.makeMove(TicTacToeCellSelection.LOWER_LEFT);
-    		break;
-    	case "moveLowerMiddle":
-    		ticTacToeGame.makeMove(TicTacToeCellSelection.LOWER_MIDDLE);
-    		break;
-    	case "moveLowerRight":
-    		ticTacToeGame.makeMove(TicTacToeCellSelection.LOWER_RIGHT);
-    		break;
-    	default:
-    		break;
-    	}
+    if(move != null) {
+	    	switch(move){
+	    	
+	    	case "moveUpperLeft":
+	    		ticTacToeGame.makeMove(TicTacToeCellSelection.UPPER_LEFT);
+	    		break;
+	    	case "moveUpperMiddle":
+	    		ticTacToeGame.makeMove(TicTacToeCellSelection.UPPER_MIDDLE);
+	    		break;
+	    	case "moveUpperRight":
+	    		ticTacToeGame.makeMove(TicTacToeCellSelection.UPPER_RIGHT);
+	    		break;
+	    	case "moveMiddleLeft":
+	    		ticTacToeGame.makeMove(TicTacToeCellSelection.MIDDLE_LEFT);
+	    		break;
+	    	case "moveMiddleMiddle":
+	    		ticTacToeGame.makeMove(TicTacToeCellSelection.MIDDLE_MIDDLE);
+				break;
+	    	case "moveMiddleRight":
+	    		ticTacToeGame.makeMove(TicTacToeCellSelection.MIDDLE_RIGHT);
+	    		break;
+	    	case "moveLowerLeft":
+	    		ticTacToeGame.makeMove(TicTacToeCellSelection.LOWER_LEFT);
+	    		break;
+	    	case "moveLowerMiddle":
+	    		ticTacToeGame.makeMove(TicTacToeCellSelection.LOWER_MIDDLE);
+	    		break;
+	    	case "moveLowerRight":
+	    		ticTacToeGame.makeMove(TicTacToeCellSelection.LOWER_RIGHT);
+	    		break;
+	    	default:
+	    		break;
+	    	}
+    }
     	
     	request.setAttribute("board", ticTacToeGameBoard);
     	request.setAttribute("game", ticTacToeGame);
