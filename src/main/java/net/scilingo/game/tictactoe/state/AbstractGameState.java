@@ -9,5 +9,9 @@ abstract class AbstractGameState implements GameState {
 	public String printMoves() {
 		return this._player.getMoveHistory();
 	}
+	
+	public String printMoves(String format) {
+		return this._player.getMoveHistory(format);
+	}
 
 }

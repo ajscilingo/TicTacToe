@@ -105,6 +105,6 @@
 				</button></td>
 		</tr>
 	</table>
-	<span>${game.gameState}</span>
+	<span>${game.gameStateHTML}</span>
 </body>
 </html>

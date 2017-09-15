@@ -43,10 +43,14 @@ button, button._ {
 
 button.X {
 	background-color: #e40002;
+	cursor: not-allowed;
+	pointer-events: none;
 }
 
 button.O {
 	background-color: #969696;
+	cursor: not-allowed;
+	pointer-events: none;
 }
 
 div.X {
@@ -55,6 +59,7 @@ div.X {
 	height: 100%;
 	width: 100%;
 	font-size: 20vh;
+	cursor: not-allowed;
 }
 
 div.O {
@@ -63,6 +68,7 @@ div.O {
 	height: 100%;
 	width: 100%;
 	font-size: 20vh;
+	cursor: not-allowed;
 }
 
 div._ {

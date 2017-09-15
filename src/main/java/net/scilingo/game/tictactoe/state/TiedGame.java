@@ -13,4 +13,7 @@ public class TiedGame extends AbstractGameState {
 		return new StringBuilder().append("Tied Game!").toString();
 	}
 	
+	public String toHTML() {
+		return toString();
+	}
 }

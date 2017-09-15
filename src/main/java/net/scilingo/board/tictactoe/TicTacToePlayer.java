@@ -167,15 +167,20 @@ public class TicTacToePlayer implements Player {
 	 * @see net.scilingo.board.tictactoe.Player#getMoveHistory()
 	 */
 	@Override
-	public String getMoveHistory() {
+	public String getMoveHistory(String format) {
 
 		StringBuilder sb = new StringBuilder();
 
 		for (Move m : _moves) {
-			sb.append(m.toString()).append(" ").append(m.madeBy().toString()).append(Constants.NEWLINE);
+			sb.append(m.toString()).append(" ").append(m.madeBy().toString()).append(format);
 		}
 
 		return sb.toString();
+	}
+	
+	@Override
+	public String getMoveHistory() {
+		return getMoveHistory(Constants.NEWLINE);
 	}
 
 	@Override

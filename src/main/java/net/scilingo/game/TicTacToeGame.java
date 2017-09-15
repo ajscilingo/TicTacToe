@@ -84,6 +84,17 @@ public class TicTacToeGame implements Game {
 			return "";
 	}
 	
+	public String getGameStateHTML() {
+		
+		GameState gameState = TicTacToePlayer.getGameState();
+		
+		if(gameState != null)
+			return gameState.toHTML();
+		else
+			return "";
+	}
+	
+	
 	/* (non-Javadoc)
 	 * @see net.scilingo.game.Game#isGameOver()
 	 */

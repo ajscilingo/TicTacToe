@@ -7,5 +7,7 @@ public interface Player {
 	boolean isGameOver();
 
 	String getMoveHistory();
+	
+	String getMoveHistory(String format);
 
 }

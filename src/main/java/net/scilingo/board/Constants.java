@@ -10,6 +10,7 @@ package net.scilingo.board;
 public class Constants {
 
 	public static final String NEWLINE = System.getProperty("line.separator");
+	public static final String HTML_LINE_BREAK = "<BR>";
 	public static final char X_SYMBOL = 'X';
 	public static final char O_SYMBOL = 'O';
 	public static final char UNOCCUPIED_SPACE = '_';
