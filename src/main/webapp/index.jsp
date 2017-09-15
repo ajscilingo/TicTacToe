@@ -4,53 +4,58 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script type="text/javascript" 
+	src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 <script type="text/javascript">
+	
+	$('div.X').fitText(1.0);
+	$('div.O').fitText(1.0);
 	
 	function onClickUpperLeft() {
 		$('#moveValue').attr("value", "moveUpperLeft");
 		$('#ticTacToeGameForm').submit();
 	}
-	
+
 	function onClickUpperMiddle() {
 		$('#moveValue').attr("value", "moveUpperMiddle");
 		$('#ticTacToeGameForm').submit();
 	}
-	
+
 	function onClickUpperRight() {
 		$('#moveValue').attr("value", "moveUpperRight");
 		$('#ticTacToeGameForm').submit();
 	}
-	
+
 	function onClickMiddleLeft() {
 		$('#moveValue').attr("value", "moveMiddleLeft");
 		$('#ticTacToeGameForm').submit();
 	}
-	
+
 	function onClickMiddleMiddle() {
 		$('#moveValue').attr("value", "moveMiddleMiddle");
 		$('#ticTacToeGameForm').submit();
 	}
-	
+
 	function onClickMiddleRight() {
 		$('#moveValue').attr("value", "moveMiddleRight");
 		$('#ticTacToeGameForm').submit();
 	}
-	
+
 	function onClickLowerLeft() {
 		$('#moveValue').attr("value", "moveLowerLeft");
 		$('#ticTacToeGameForm').submit();
 	}
-	
+
 	function onClickLowerMiddle() {
 		$('#moveValue').attr("value", "moveLowerMiddle");
 		$('#ticTacToeGameForm').submit();
 	}
-	
+
 	function onClickLowerRight() {
 		$('#moveValue').attr("value", "moveLowerRight");
 		$('#ticTacToeGameForm').submit();
 	}
+	
 	
 </script>
 <link rel="stylesheet" type="text/css" href="styles.css">
@@ -58,24 +63,51 @@
 <body>
 	<form id="ticTacToeGameForm" action="ticTacToeGame" method="post">
 		<input id="moveValue" type="hidden" name="move" value="">
-		<table>
-			<tr>
-				<td><input id="btnUpperLeft" type="button" class="${board.upperLeftCell}" onclick="onClickUpperLeft()"></td>
-				<td><input id="btnUpperMiddle" type="button" class="${board.upperMiddleCell}" onclick="onClickUpperMiddle()"></td>
-				<td><input id="btnUpperRight" type="button" class="${board.upperRightCell}" onclick="onClickUpperRight()"></td>
-			</tr>
-			<tr>
-				<td><input id="btnMiddleLeft" type="button" class="${board.middleLeftCell}" onclick="onClickMiddleLeft()"></td>
-				<td><input id="btnMiddleMiddle" type="button" class="${board.middleMiddleCell}" onclick="onClickMiddleMiddle()"></td>
-				<td><input id="btnMiddleRight" type="button" class="${board.middleRightCell}" onclick="onClickMiddleRight()"></td>
-			</tr>
-			<tr>
-				<td><input id="btnLowerLeft" type="button" class="${board.lowerLeftCell}" onclick="onClickLowerLeft()"></td>
-				<td><input id="btnLowerMiddle" type="button" class="${board.lowerMiddleCell}" onclick="onClickLowerMiddle()"></td>
-				<td><input id="btnLowerRight" type="button" class="${board.lowerRightCell}" onclick="onClickLowerRight()"></td>
-			</tr>
-		</table>
 	</form>
+	<table>
+		<tr>
+			<td><button id="btnUpperLeft" class="${board.upperLeftCell}"
+					onclick="onClickUpperLeft()">
+					<div class="${board.upperLeftCell}">${board.upperLeftCell}</div>
+					</button></td>
+			<td><button id="btnUpperMiddle" class="${board.upperMiddleCell}"
+					onclick="onClickUpperMiddle()">
+					<div class="${board.upperMiddleCell}">${board.upperMiddleCell}</div>
+					</button></td>
+			<td><button id="btnUpperRight" type="button"
+					class="${board.upperRightCell}" onclick="onClickUpperRight()">
+					<div class="${board.upperRightCell}">${board.upperRightCell}</div>
+					</button></td>
+		</tr>
+		<tr>
+			<td><button id="btnMiddleLeft" class="${board.middleLeftCell}"
+					onclick="onClickMiddleLeft()">
+					<div class="${board.middleLeftCell}">${board.middleLeftCell}</div>
+					</button></td>
+			<td><button id="btnMiddleMiddle"
+					class="${board.middleMiddleCell}" onclick="onClickMiddleMiddle()">
+					<div class="${board.middleMiddleCell}">${board.middleMiddleCell}</div>
+				</button></td>
+			<td><button id="btnMiddleRight" class="${board.middleRightCell}"
+					onclick="onClickMiddleRight()">
+					<div class="${board.middleRightCell}">${board.middleRightCell}</div>
+				</button></td>
+		</tr>
+		<tr>
+			<td><button id="btnLowerLeft" class="${board.lowerLeftCell}"
+					onclick="onClickLowerLeft()">
+					<div class="${board.lowerLeftCell}">${board.lowerLeftCell}</div>
+				</button></td>
+			<td><button id="btnLowerMiddle" class="${board.lowerMiddleCell}"
+					onclick="onClickLowerMiddle()">
+					<div class="${board.lowerMiddleCell}">${board.lowerMiddleCell}</div>
+				</button></td>
+			<td><button id="btnLowerRight" class="${board.lowerRightCell}"
+					onclick="onClickLowerRight()">
+					<div class="${board.lowerRightCell}">${board.lowerRightCell}</div>
+				</button></td>
+		</tr>
+	</table>
 	<span>${game.gameState}</span>
 </body>
 </html>
