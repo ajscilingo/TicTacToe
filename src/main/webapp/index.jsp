@@ -3,13 +3,10 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>TicTacToe v0.0.1</title>
 <script type="text/javascript" 
 	src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 <script type="text/javascript">
-	
-	$('div.X').fitText(1.0);
-	$('div.O').fitText(1.0);
 	
 	function onClickUpperLeft() {
 		$('#moveValue').attr("value", "moveUpperLeft");
