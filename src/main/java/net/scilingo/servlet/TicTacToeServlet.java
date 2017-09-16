@@ -18,13 +18,15 @@ public class TicTacToeServlet extends HttpServlet {
 	private static final long serialVersionUID = 891251796134227260L;
 	private static TicTacToeGame ticTacToeGame;
 	private static TicTacToeGameBoard ticTacToeGameBoard;
+	private String visibilityStyle;
 
 	@Override
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 
 		String move = request.getParameter("move");
-
+		visibilityStyle = "";
+		
 		if (ticTacToeGame == null) {
 			ticTacToeGame = new TicTacToeGame();
 			ticTacToeGameBoard = (TicTacToeGameBoard) ticTacToeGame.getGameBoard();
@@ -70,9 +72,14 @@ public class TicTacToeServlet extends HttpServlet {
 				break;
 			}
 		}
+		
+		// check to see if game is over to show play again message
+		if(ticTacToeGame.isGameOver())
+			visibilityStyle = "visibility: visible !important;";
 
 		request.setAttribute("board", ticTacToeGameBoard);
 		request.setAttribute("game", ticTacToeGame);
+		request.setAttribute("visibilityStyle", visibilityStyle);
 
 		getServletContext().getRequestDispatcher("/index.jsp").forward(request, response);
 

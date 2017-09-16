@@ -53,6 +53,9 @@
 		$('#ticTacToeGameForm').submit();
 	}
 	
+	function onClickPlayAgain(){
+		$('#ticTacToeGameForm').submit();
+	}
 	
 </script>
 <link rel="stylesheet" type="text/css" href="styles.css">
@@ -105,6 +108,6 @@
 				</button></td>
 		</tr>
 	</table>
-	<span>${game.gameStateHTML}</span>
+	<div id="playAgain" style="${visibilityStyle}"><div id="playAgainInner"><div id="playAgainInnerText">${game.gameStateHTML}</div><button id="btnPlayAgain" onclick="onClickPlayAgain()">Play Again</button></div></div>
 </body>
 </html>

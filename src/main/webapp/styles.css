@@ -11,7 +11,7 @@ body {
 }
 
 table {
-	height: 80%;
+	height: 100%;
 	width: 100%;
 	margin: 0px;
 }
@@ -27,8 +27,8 @@ tr {
 }
 
 td {
-	height:33%;
-	width:33%;
+	height: 33%;
+	width: 33%;
 }
 
 button, button._ {
@@ -39,6 +39,17 @@ button, button._ {
 	padding: 0px;
 	margin: 0px;
 	border: 0px;
+}
+
+button#btnPlayAgain {
+	background-color: #c7c0c6;
+	width: 33vw;
+	height: 10vh;
+	border: 1px solid black;
+	cursor: pointer;
+	border-radius: 12px;
+	margin: 4px;
+	font-size: 4vh;
 }
 
 button.X {
@@ -58,7 +69,7 @@ div.X {
 	visibility: visible;
 	height: 100%;
 	width: 100%;
-	font-size: 20vh;
+	font-size: 25vh;
 	cursor: not-allowed;
 }
 
@@ -67,7 +78,7 @@ div.O {
 	visibility: visible;
 	height: 100%;
 	width: 100%;
-	font-size: 20vh;
+	font-size: 25vh;
 	cursor: not-allowed;
 }
 
@@ -76,4 +87,40 @@ div._ {
 	display: block;
 	height: 100%;
 	width: 100%;
+}
+
+div#playAgain {
+	margin: 0px;
+	padding: 0px;
+	width: 100vw;
+	height: 100vh;
+	display: block;
+	position: absolute;
+	top: 0;
+	left: 0;
+	background: rgba(255, 255, 255, 0.75);
+	border: 2px solid black;
+	visibility: hidden;
+}
+
+div#playAgainInner {
+	display: block;
+	margin: 0px;
+	padding: 0px;
+	position: relative;
+	top: 33vh;
+	text-align: center;
+	width: 100vw;
+	height: 33vh;
+}
+
+div#playAgainInnerText {
+	border: 0.5vw solid black;
+	padding: 0.5vw;
+	margin: 0.5vw;
+	width: 31vw;
+	background-color: red;
+	position: relative;
+	left: 33vw;
+	font-family: Baghdad;
 }
