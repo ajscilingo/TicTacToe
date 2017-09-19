@@ -12,19 +12,11 @@ public class TicTacToeGameBoard extends AbstractGameBoard {
 	private static final int LeftColumn = Column.LEFT.ordinal();
 	private static final int MiddleColumn = Column.MIDDLE.ordinal();
 	private static final int RightColumn = Column.RIGHT.ordinal();
-	private static TicTacToeGameBoard _ticTacToeGameBoard;
+
 	
 	TicTacToeGameBoard(){
 		super(3,3);
 		clearBoard();
-	}
-	
-	static TicTacToeGameBoard generateTicTacToeGameBoard() {
-		if(_ticTacToeGameBoard == null)
-			_ticTacToeGameBoard = new TicTacToeGameBoard();
-		else
-			_ticTacToeGameBoard.clearBoard();
-		return _ticTacToeGameBoard;
 	}
 	
 	public final char getUpperLeftCell() {

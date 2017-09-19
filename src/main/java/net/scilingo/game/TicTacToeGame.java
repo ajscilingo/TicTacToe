@@ -1,5 +1,6 @@
 package net.scilingo.game;
 
+import java.util.InputMismatchException;
 import java.util.Scanner;
 
 import net.scilingo.board.*;
@@ -12,14 +13,59 @@ public class TicTacToeGame implements Game {
 	protected Player _currentPlayer;
 	protected Player _player1;
 	protected Player _player2;
+	protected Player _playerHuman;
+	protected Player _playerComputer;
 	protected TicTacToeGameBoard _gameBoard;
 	
 	public TicTacToeGame(){
+		_gameBoard = TicTacToeGameFactory.generateGameBoard();
 		_player1 = TicTacToeGameFactory.generatePlayerOne();
 		_player2 = TicTacToeGameFactory.generatePlayerTwo();
+		_playerHuman = null;
+		_playerComputer = null;
 		_gameOver = false;
-		_gameBoard = TicTacToeGameFactory.generateGameBoard();
 		_currentPlayer = _player1;
+	}
+	
+	public TicTacToeGame(boolean HumanPlayer)
+	{
+		this();
+		
+		if(!HumanPlayer) {
+			_playerComputer = TicTacToeGameFactory.generatePlayerComputer();
+			_player2 = _playerComputer;
+		}
+		else {
+			_playerHuman = _player2;
+		}
+		
+	}
+	
+	public void determinePlayerTwo(Scanner sc) {
+		while(_player2 == null) {
+			showPlayerMenu();
+			
+			try {
+				int playerSelection = sc.nextInt();
+				
+				if(playerSelection == Constants.TWO_PLAYER) {
+					_playerHuman = TicTacToeGameFactory.generatePlayerTwo();
+					_player2 = _playerHuman;
+				}
+				else if(playerSelection == Constants.ONE_PLAYER) {
+					_playerComputer = TicTacToeGameFactory.generatePlayerComputer();
+					_player2 = _playerComputer;
+				}
+				else {
+					System.out.println(Constants.ONE_OR_TWO_PLAYERS_MSG);
+				}
+			}
+			catch(Exception e){
+				System.out.println(Constants.INVALID_PLAYER_SELECTION_MSG);
+				sc.next();
+			}
+		}
+		
 	}
 	
 	/* (non-Javadoc)
@@ -42,19 +88,43 @@ public class TicTacToeGame implements Game {
 	@Override
 	public void play(){
 		
+		// set _player2 to null again for determining what it should be
+		_player2 = null;
+		
 		Scanner sc = new Scanner(System.in);
+		determinePlayerTwo(sc);
 		
 		while(!isGameOver()){
-			showMenu();
 			
-			try {
-				makeMove(TicTacToeCellSelection.values()[sc.nextInt()]);
+			if( _currentPlayer.equals(_player1) || _currentPlayer.equals(_playerHuman) )
+			{
+				
+				showMoveMenu();
+				
+				try {
+					makeMove(TicTacToeCellSelection.values()[sc.nextInt()]);
+				}
+				catch(Exception e){
+					// prevent user from changing on exception
+					_currentPlayer = getCurrentPlayer();
+					sc.nextLine();
+				}
 			}
-			catch(Exception e){
-				// prevent user from changing on exception
-				_currentPlayer = getCurrentPlayer();
-				sc.nextLine();
+			else if(_currentPlayer.equals(_playerComputer)) {
+				
+				TicTacToePlayerComputer computerPlayer = (TicTacToePlayerComputer) _playerComputer;
+				
+				try {
+					while(makeMove(computerPlayer.getNextMove()) == false){
+						System.out.println("Space Already Occupied Trying Again");
+						_currentPlayer = getCurrentPlayer();
+					}
+				}
+				catch(Exception e){
+					System.err.println(e.getMessage());
+				}
 			}
+		
 		}
 		if(playAgain(sc))
 			new TicTacToeGame().play();
@@ -113,7 +183,18 @@ public class TicTacToeGame implements Game {
 		System.out.println(" ");
 	}
 	
-	private void showMenu(){
+	private void showPlayerMenu() {
+		StringBuilder sb = new StringBuilder();
+		System.out.println(sb
+		.append("Choose Number Of Players:")
+		.append(Constants.NEWLINE)
+		.append("1 Player")
+		.append(Constants.NEWLINE)
+		.append("2 Player")
+		.toString());
+	}
+	
+	private void showMoveMenu(){
 		
 		StringBuilder sb = new StringBuilder();
 		System.out.print(sb
