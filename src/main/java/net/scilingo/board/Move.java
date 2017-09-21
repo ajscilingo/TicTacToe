@@ -5,5 +5,6 @@ public interface Move {
 	public boolean move(Player player, boolean gameOver);
 	public Player madeBy();
 	public String getDisplayName();
+	public CellSelection getDestinationCell();
 	
 }

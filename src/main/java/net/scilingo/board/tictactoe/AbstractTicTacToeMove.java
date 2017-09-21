@@ -1,5 +1,6 @@
 package net.scilingo.board.tictactoe;
 
+import net.scilingo.board.CellSelection;
 import net.scilingo.board.Move;
 import net.scilingo.board.Player;
 
@@ -31,6 +32,11 @@ abstract class AbstractTicTacToeMove implements Move {
 	@Override
 	public Player madeBy() {
 		return this._player;
+	}
+	
+	@Override
+	public CellSelection getDestinationCell() {
+		return this._cellSelection;
 	}
 
 }

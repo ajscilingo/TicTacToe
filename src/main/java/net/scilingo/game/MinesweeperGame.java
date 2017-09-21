@@ -10,6 +10,10 @@ import net.scilingo.board.minesweeper.MinesweeperGameFactory;
 
 public class MinesweeperGame implements Game{
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 2903022577605992749L;
 	protected MinesweeperGameBoard _gameBoard;
 	
 	public MinesweeperGame() {

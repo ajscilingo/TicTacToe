@@ -1,6 +1,5 @@
 package net.scilingo.game;
 
-import java.util.InputMismatchException;
 import java.util.Scanner;
 
 import net.scilingo.board.*;
@@ -9,6 +8,10 @@ import net.scilingo.game.tictactoe.state.GameState;
 
 public class TicTacToeGame implements Game {
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1401219477193635111L;
 	private boolean _gameOver;
 	protected Player _currentPlayer;
 	protected Player _player1;
@@ -34,6 +37,7 @@ public class TicTacToeGame implements Game {
 		if(!HumanPlayer) {
 			_playerComputer = TicTacToeGameFactory.generatePlayerComputer();
 			_player2 = _playerComputer;
+			
 		}
 		else {
 			_playerHuman = _player2;
