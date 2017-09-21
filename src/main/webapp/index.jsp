@@ -108,6 +108,22 @@
 				</button></td>
 		</tr>
 	</table>
-	<div id="playAgain" style="${visibilityStyle}"><div id="playAgainInner"><div id="playAgainInnerText">${game.gameStateHTML}</div><button id="btnPlayAgain" onclick="onClickPlayAgain()">Play Again</button></div></div>
+	<div id="playAgain" style="${playAgainVisibilityStyle}">
+		<div id="playAgainInner">
+			<div id="playAgainInnerText">
+				${game.gameStateHTML}
+			</div>
+		<button id="btnPlayAgain" onclick="onClickPlayAgain()">Play Again</button>
+		</div>
+	</div>
+	<div id="oneOrTwoPlayers" style="${numberOfPlayersVisibilityStyle}">
+		<div id="oneOrTwoPlayersInner">
+			<h1>Number Of Players?</h1>
+			<form id="numberOfPlayersForm" action="ticTacToeGame" method="post">
+				<input onchange='this.form.submit();' type="radio" name="humanPlayer" value="false">1 Player<br>
+				<input onchange='this.form.submit();' type="radio" name="humanPlayer" value="true">2 Player<br>
+			</form>
+		</div>
+	</div>
 </body>
 </html>

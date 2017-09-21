@@ -89,6 +89,19 @@ div._ {
 	width: 100%;
 }
 
+div#oneOrTwoPlayers {
+	margin: 0px;
+	padding: 0px;
+	width: 100vw;
+	height: 100vh;
+	display: block;
+	position: absolute;
+	top: 0;
+	left: 0;
+	background: rgba(255, 255, 255, 0.75);
+	border: 2px solid black;
+}
+
 div#playAgain {
 	margin: 0px;
 	padding: 0px;
@@ -103,7 +116,7 @@ div#playAgain {
 	visibility: hidden;
 }
 
-div#playAgainInner {
+div#playAgainInner, div#oneOrTwoPlayersInner {
 	display: block;
 	margin: 0px;
 	padding: 0px;

@@ -18,21 +18,30 @@ public class TicTacToeServlet extends HttpServlet {
 	private static final long serialVersionUID = 891251796134227260L;
 	private static TicTacToeGame ticTacToeGame;
 	private static TicTacToeGameBoard ticTacToeGameBoard;
-	private String visibilityStyle;
+	private String playAgainVisibilityStyle;
+	private String numberOfPlayersVisibilityStyle;
 
 	@Override
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 
 		String move = request.getParameter("move");
-		visibilityStyle = "";
+		boolean humanPlayerTwo = Boolean.parseBoolean(request.getParameter("humanPlayer"));
+		playAgainVisibilityStyle = "";
+		numberOfPlayersVisibilityStyle = "visibility: hidden !important;";
 		
 		if (ticTacToeGame == null) {
-			ticTacToeGame = new TicTacToeGame();
+			if(humanPlayerTwo)
+				ticTacToeGame = new TicTacToeGame();
+			else
+				ticTacToeGame = new TicTacToeGame(false);
 			ticTacToeGameBoard = (TicTacToeGameBoard) ticTacToeGame.getGameBoard();
 		} else {
 			if (ticTacToeGame.isGameOver()) {
-				ticTacToeGame = new TicTacToeGame();
+				if(humanPlayerTwo)
+					ticTacToeGame = new TicTacToeGame();
+				else
+					ticTacToeGame = new TicTacToeGame(false);
 				ticTacToeGameBoard = (TicTacToeGameBoard) ticTacToeGame.getGameBoard();
 				move = null;
 			}
@@ -75,11 +84,12 @@ public class TicTacToeServlet extends HttpServlet {
 		
 		// check to see if game is over to show play again message
 		if(ticTacToeGame.isGameOver())
-			visibilityStyle = "visibility: visible !important;";
+			playAgainVisibilityStyle = "visibility: visible !important;";
 
 		request.setAttribute("board", ticTacToeGameBoard);
 		request.setAttribute("game", ticTacToeGame);
-		request.setAttribute("visibilityStyle", visibilityStyle);
+		request.setAttribute("playAgainVisibilityStyle", playAgainVisibilityStyle);
+		request.setAttribute("numberOfPlayersVisibilityStyle", numberOfPlayersVisibilityStyle);
 
 		getServletContext().getRequestDispatcher("/index.jsp").forward(request, response);
 

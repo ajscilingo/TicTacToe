@@ -30,11 +30,11 @@ public class TicTacToeGame implements Game {
 		_currentPlayer = _player1;
 	}
 	
-	public TicTacToeGame(boolean HumanPlayer)
+	public TicTacToeGame(boolean humanPlayer)
 	{
 		this();
 		
-		if(!HumanPlayer) {
+		if(!humanPlayer) {
 			_playerComputer = TicTacToeGameFactory.generatePlayerComputer();
 			_player2 = _playerComputer;
 			
