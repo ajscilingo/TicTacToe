@@ -54,7 +54,7 @@
 	}
 	
 	function onClickPlayAgain(){
-		$('#ticTacToeGameForm').submit();
+		$(location).attr('href', 'index.jsp');
 	}
 	
 </script>

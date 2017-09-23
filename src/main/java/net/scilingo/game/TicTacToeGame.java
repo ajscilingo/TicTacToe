@@ -86,6 +86,13 @@ public class TicTacToeGame implements Game {
 			return _player1;
 	}
 	
+	public TicTacToePlayerComputer getComputerPlayer() {
+		if(_player2.equals(_playerComputer))
+			return (TicTacToePlayerComputer) _playerComputer;
+		else
+			return null;
+	}
+	
 	/* (non-Javadoc)
 	 * @see net.scilingo.game.Game#play()
 	 */

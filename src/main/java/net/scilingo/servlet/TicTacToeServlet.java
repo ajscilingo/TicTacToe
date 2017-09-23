@@ -20,17 +20,20 @@ public class TicTacToeServlet extends HttpServlet {
 	private static TicTacToeGameBoard ticTacToeGameBoard;
 	private String playAgainVisibilityStyle;
 	private String numberOfPlayersVisibilityStyle;
+	private boolean humanPlayerTwo;
 
 	@Override
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-
+		
 		String move = request.getParameter("move");
-		boolean humanPlayerTwo = Boolean.parseBoolean(request.getParameter("humanPlayer"));
 		playAgainVisibilityStyle = "";
 		numberOfPlayersVisibilityStyle = "visibility: hidden !important;";
 		
 		if (ticTacToeGame == null) {
+			
+			humanPlayerTwo = Boolean.parseBoolean(request.getParameter("humanPlayer"));
+			
 			if(humanPlayerTwo)
 				ticTacToeGame = new TicTacToeGame();
 			else
@@ -38,6 +41,9 @@ public class TicTacToeServlet extends HttpServlet {
 			ticTacToeGameBoard = (TicTacToeGameBoard) ticTacToeGame.getGameBoard();
 		} else {
 			if (ticTacToeGame.isGameOver()) {
+				
+				humanPlayerTwo = Boolean.parseBoolean(request.getParameter("humanPlayer"));
+				
 				if(humanPlayerTwo)
 					ticTacToeGame = new TicTacToeGame();
 				else
@@ -80,6 +86,9 @@ public class TicTacToeServlet extends HttpServlet {
 			default:
 				break;
 			}
+			
+			if(!humanPlayerTwo && !ticTacToeGame.isGameOver())
+				ticTacToeGame.makeMove(ticTacToeGame.getComputerPlayer().getNextMove());
 		}
 		
 		// check to see if game is over to show play again message
