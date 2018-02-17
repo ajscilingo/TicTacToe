@@ -37,9 +37,9 @@ public class MinesweeperGame implements Game{
 	}
 
 	@Override
-	public void play() {
+	public Game play(Scanner sc) {
 		// TODO Auto-generated method stub
-		
+		return null;
 	}
 
 	@Override

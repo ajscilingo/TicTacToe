@@ -13,7 +13,7 @@ interface Game extends Serializable {
 
 	Board getGameBoard();
 	
-	void play();
+	Game play(Scanner sc);
 
 	void checkForWin();
 

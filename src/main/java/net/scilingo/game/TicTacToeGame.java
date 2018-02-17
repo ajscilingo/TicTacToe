@@ -97,12 +97,10 @@ public class TicTacToeGame implements Game {
 	 * @see net.scilingo.game.Game#play()
 	 */
 	@Override
-	public void play(){
+	public Game play(Scanner sc){
 		
 		// set _player2 to null again for determining what it should be
 		_player2 = null;
-		
-		Scanner sc = new Scanner(System.in);
 		determinePlayerTwo(sc);
 		
 		while(!isGameOver()){
@@ -137,9 +135,12 @@ public class TicTacToeGame implements Game {
 			}
 		
 		}
-		if(playAgain(sc))
-			new TicTacToeGame().play();
+		
+		if(playAgain(sc)) {
+			return new TicTacToeGame();
+		}
 		sc.close();
+		return null;
 	}
 	
 	/* (non-Javadoc)
