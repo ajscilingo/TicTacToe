@@ -1,3 +1,4 @@
 #exclude bin
 bin/
 target/
+.idea/*
