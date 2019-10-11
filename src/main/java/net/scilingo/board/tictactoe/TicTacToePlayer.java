@@ -32,7 +32,7 @@ public class TicTacToePlayer implements Player {
 
 	// My Player Identifier
 	// Player starts at one once added lines 22-23
-	private int ID = 0;
+	private int id = 0;
 	
 	TicTacToePlayer(char symbol) {
 		this._SYMBOL = symbol;
@@ -43,8 +43,8 @@ public class TicTacToePlayer implements Player {
 
 		// keep track of number of players
 		_playerCount++;
-		this.ID = _playerCount;
-		this._name = new StringBuilder().append("Player ").append(this.ID).toString();
+		this.id = _playerCount;
+		this._name = new StringBuilder().append("Player ").append(this.id).toString();
 		_gameState = null;
 	}
 

@@ -5,6 +5,11 @@ import java.util.Scanner;
 import net.scilingo.board.*;
 import net.scilingo.board.tictactoe.*;
 import net.scilingo.game.tictactoe.state.GameState;
+import net.scilingo.menu.Menu;
+import net.scilingo.menu.BaseMenu;
+import net.scilingo.menu.MenuItem;
+import net.scilingo.menu.NumericMenuItem;
+import net.scilingo.menu.BaseMenuItem;
 
 public class TicTacToeGame implements Game {
 
@@ -19,6 +24,8 @@ public class TicTacToeGame implements Game {
 	protected Player _playerHuman;
 	protected Player _playerComputer;
 	protected TicTacToeGameBoard _gameBoard;
+	protected Menu _playerMenu;
+	protected Menu _moveMenu;
 	
 	public TicTacToeGame(){
 		_gameBoard = TicTacToeGameFactory.generateGameBoard();
@@ -28,6 +35,10 @@ public class TicTacToeGame implements Game {
 		_playerComputer = null;
 		_gameOver = false;
 		_currentPlayer = _player1;
+		// create player 1 / player 2 menu selection
+		_playerMenu = TicTacToeGameFactory.generatePlayerMenu();
+		// move menu selection
+		_moveMenu = TicTacToeGameFactory.generateMoveMenu();
 	}
 	
 	public TicTacToeGame(boolean humanPlayer)
@@ -195,15 +206,9 @@ public class TicTacToeGame implements Game {
 		System.out.println(" ");
 	}
 	
-	private void showPlayerMenu() {
-		StringBuilder sb = new StringBuilder();
-		System.out.println(sb
-		.append("Choose Number Of Players:")
-		.append(Constants.NEWLINE)
-		.append("1 Player")
-		.append(Constants.NEWLINE)
-		.append("2 Player")
-		.toString());
+	
+	protected void showPlayerMenu() {
+		System.out.println(this._playerMenu.display());
 	}
 	
 	private void showMoveMenu(){
@@ -214,24 +219,7 @@ public class TicTacToeGame implements Game {
 		.append(" Make move #")
 		.append(TicTacToePlayer.getNumberOfMoves() + 1)
 		.append(Constants.NEWLINE)
-		.append(TicTacToeCellSelection.UPPER_LEFT.ordinal()).append(".) Move To Upper Left")
-		.append(Constants.NEWLINE)
-		.append(TicTacToeCellSelection.UPPER_MIDDLE.ordinal()).append(".) Move To Upper Center")
-		.append(Constants.NEWLINE)
-		.append(TicTacToeCellSelection.UPPER_RIGHT.ordinal()).append(".) Move To Upper Right")
-		.append(Constants.NEWLINE)
-		.append(TicTacToeCellSelection.MIDDLE_LEFT.ordinal()).append(".) Move To Center Left")
-		.append(Constants.NEWLINE)
-		.append(TicTacToeCellSelection.MIDDLE_MIDDLE.ordinal()).append(".) Move To Center")
-		.append(Constants.NEWLINE)
-		.append(TicTacToeCellSelection.MIDDLE_RIGHT.ordinal()).append(".) Move To Center Right")
-		.append(Constants.NEWLINE)
-		.append(TicTacToeCellSelection.LOWER_LEFT.ordinal()).append(".) Move To Lower Left")
-		.append(Constants.NEWLINE)
-		.append(TicTacToeCellSelection.LOWER_MIDDLE.ordinal()).append(".) Move To Lower Center")
-		.append(Constants.NEWLINE)
-		.append(TicTacToeCellSelection.LOWER_RIGHT.ordinal()).append(".) Move To Lower Right")
-		.append(Constants.NEWLINE)
+		.append(_moveMenu.display())
 		.toString());
 	}
 	

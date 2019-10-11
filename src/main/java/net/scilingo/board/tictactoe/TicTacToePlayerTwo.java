@@ -7,4 +7,9 @@ class TicTacToePlayerTwo extends TicTacToePlayer {
 	TicTacToePlayerTwo(){
 		super(Constants.O_SYMBOL);
 	}
+	
+	@Override
+	public String toString() {
+		return "Player 2";
+	}
 }

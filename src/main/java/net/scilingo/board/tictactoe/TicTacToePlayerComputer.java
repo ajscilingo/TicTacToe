@@ -95,4 +95,9 @@ public class TicTacToePlayerComputer extends TicTacToePlayerTwo {
 		else
 			return null;
 	}
+	
+	@Override
+	public String toString() {
+		return "Computer Player";
+	}
 }

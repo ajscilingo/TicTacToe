@@ -1,7 +1,5 @@
 package net.scilingo.board.tictactoe;
 
-import java.util.Comparator;
-
 import net.scilingo.board.CellSelection;
 
 public enum TicTacToeCellSelection implements CellSelection{
@@ -18,7 +16,7 @@ public enum TicTacToeCellSelection implements CellSelection{
 	public static TicTacToeCellSelection[] getAdjacentCells(TicTacToeCellSelection cell) {
 		
 		switch(cell) {
-			case	 UPPER_LEFT:
+			case UPPER_LEFT:
 				return new TicTacToeCellSelection[]{UPPER_MIDDLE, MIDDLE_LEFT, MIDDLE_MIDDLE};
 			case UPPER_MIDDLE:
 				return new TicTacToeCellSelection[]{UPPER_LEFT, UPPER_RIGHT, MIDDLE_LEFT, MIDDLE_MIDDLE, MIDDLE_RIGHT};
