@@ -3,7 +3,7 @@ package net.scilingo.game.tictactoe.state;
 import net.scilingo.board.Constants;
 import net.scilingo.board.Player;
 
-public class RightDiagonalWin extends AbstractGameState {
+public class RightDiagonalWin extends AbstractGameState implements ToHtml {
 
 	public RightDiagonalWin(Player player) {
 		this._player = player;

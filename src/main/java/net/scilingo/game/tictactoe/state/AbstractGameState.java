@@ -2,7 +2,7 @@ package net.scilingo.game.tictactoe.state;
 
 import net.scilingo.board.Player;
 
-abstract class AbstractGameState implements GameState {
+public abstract class AbstractGameState {
 
 	protected Player _player;
 

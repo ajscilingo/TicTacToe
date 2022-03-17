@@ -4,7 +4,7 @@ import net.scilingo.game.tictactoe.state.*;
 
 public class TicTacToePlayerState {
 
-	static GameState determineState(TicTacToePlayer player) {
+	static AbstractGameState determineState(TicTacToePlayer player) {
 
 		
 		// Top Row Win

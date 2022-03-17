@@ -26,7 +26,7 @@ public class TicTacToePlayer implements Player {
 	private MoveUpperMiddle _upperMiddle = null;
 	private MoveUpperRight _upperRight = null;
 
-	private static GameState _gameState;
+	private static AbstractGameState _gameState;
 
 	private static int _currentNumOfMovesForAllPlayersInGame;
 
@@ -159,7 +159,7 @@ public class TicTacToePlayer implements Player {
 		return (TicTacToePlayer._gameState != null);
 	}
 
-	public static GameState getGameState() {
+	public static AbstractGameState getGameState() {
 		return TicTacToePlayer._gameState;
 	}
 

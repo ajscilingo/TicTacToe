@@ -4,12 +4,9 @@ import java.util.Scanner;
 
 import net.scilingo.board.*;
 import net.scilingo.board.tictactoe.*;
-import net.scilingo.game.tictactoe.state.GameState;
+import net.scilingo.game.tictactoe.state.AbstractGameState;
+import net.scilingo.game.tictactoe.state.ToHtml;
 import net.scilingo.menu.Menu;
-import net.scilingo.menu.BaseMenu;
-import net.scilingo.menu.MenuItem;
-import net.scilingo.menu.NumericMenuItem;
-import net.scilingo.menu.BaseMenuItem;
 
 public class TicTacToeGame implements Game {
 
@@ -169,7 +166,7 @@ public class TicTacToeGame implements Game {
 	
 	public String getGameState(){
 		
-		GameState gameState = TicTacToePlayer.getGameState();
+		AbstractGameState gameState = TicTacToePlayer.getGameState();
 		
 		if(gameState != null)
 			return gameState.toString();
@@ -178,11 +175,11 @@ public class TicTacToeGame implements Game {
 	}
 	
 	public String getGameStateHTML() {
-		
-		GameState gameState = TicTacToePlayer.getGameState();
+
+		AbstractGameState gameState = TicTacToePlayer.getGameState();
 		
 		if(gameState != null)
-			return gameState.toHTML();
+			return ((ToHtml)gameState).toHTML();
 		else
 			return "";
 	}
