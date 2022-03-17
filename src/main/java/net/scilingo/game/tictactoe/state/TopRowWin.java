@@ -1,11 +1,11 @@
 package net.scilingo.game.tictactoe.state;
 
 import net.scilingo.board.Constants;
-import net.scilingo.board.Player;
+import net.scilingo.board.tictactoe.TicTacToePlayer;
 
 public class TopRowWin extends AbstractGameState implements ToHtml {
 
-	public TopRowWin(Player player) {
+	public TopRowWin(TicTacToePlayer player) {
 		this._player = player;
 	}
 	

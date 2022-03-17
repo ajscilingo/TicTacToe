@@ -3,7 +3,7 @@ package net.scilingo.board.tictactoe;
 import net.scilingo.board.Constants;
 import net.scilingo.board.Move;
 
-class TicTacToePlayerOne extends TicTacToePlayer {
+class TicTacToePlayerOne extends AbstractTicTacToePlayer {
 	
 	private TicTacToePlayerComputer _computerPlayer = null;
 	

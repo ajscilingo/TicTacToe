@@ -4,7 +4,7 @@ import net.scilingo.game.tictactoe.state.*;
 
 public class TicTacToePlayerState {
 
-	static AbstractGameState determineState(TicTacToePlayer player) {
+	static AbstractGameState determineState(AbstractTicTacToePlayer player) {
 
 		
 		// Top Row Win
@@ -32,7 +32,7 @@ public class TicTacToePlayerState {
 		else if(player.hasLowerLeft() && player.hasMiddleMiddle() && player.hasUpperRight()) 
 			return new LeftDiagonalWin(player);
 		// Tied Game
-		else if(TicTacToePlayer.getNumberOfMoves() > 8)
+		else if(AbstractTicTacToePlayer.getNumberOfMoves() > 8)
 			return new TiedGame(player);
 		// No Win
 		else

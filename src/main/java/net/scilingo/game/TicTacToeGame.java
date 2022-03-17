@@ -15,11 +15,11 @@ public class TicTacToeGame implements Game {
 	 */
 	private static final long serialVersionUID = 1401219477193635111L;
 	private boolean _gameOver;
-	protected Player _currentPlayer;
-	protected Player _player1;
-	protected Player _player2;
-	protected Player _playerHuman;
-	protected Player _playerComputer;
+	protected TicTacToePlayer _currentPlayer;
+	protected TicTacToePlayer _player1;
+	protected TicTacToePlayer _player2;
+	protected TicTacToePlayer _playerHuman;
+	protected TicTacToePlayer _playerComputer;
 	protected TicTacToeGameBoard _gameBoard;
 	protected Menu _playerMenu;
 	protected Menu _moveMenu;
@@ -84,7 +84,7 @@ public class TicTacToeGame implements Game {
 	 * @see net.scilingo.game.Game#getCurrentPlayer()
 	 */
 	@Override
-	public Player getCurrentPlayer(){
+	public TicTacToePlayer getCurrentPlayer(){
 		if(_currentPlayer == null)
 			return _player1;
 		
@@ -158,7 +158,7 @@ public class TicTacToeGame implements Game {
 	public void checkForWin(){
 	
 		if(_currentPlayer.isGameOver()){
-			System.out.println(TicTacToePlayer.getGameState());
+			System.out.println(AbstractTicTacToePlayer.getGameState());
 			_gameOver =  true;		
 		}
 			
@@ -166,7 +166,7 @@ public class TicTacToeGame implements Game {
 	
 	public String getGameState(){
 		
-		AbstractGameState gameState = TicTacToePlayer.getGameState();
+		AbstractGameState gameState = AbstractTicTacToePlayer.getGameState();
 		
 		if(gameState != null)
 			return gameState.toString();
@@ -176,7 +176,7 @@ public class TicTacToeGame implements Game {
 	
 	public String getGameStateHTML() {
 
-		AbstractGameState gameState = TicTacToePlayer.getGameState();
+		AbstractGameState gameState = AbstractTicTacToePlayer.getGameState();
 		
 		if(gameState != null)
 			return ((ToHtml)gameState).toHTML();
@@ -214,7 +214,7 @@ public class TicTacToeGame implements Game {
 		System.out.print(sb
 		.append(_currentPlayer)
 		.append(" Make move #")
-		.append(TicTacToePlayer.getNumberOfMoves() + 1)
+		.append(AbstractTicTacToePlayer.getNumberOfMoves() + 1)
 		.append(Constants.NEWLINE)
 		.append(_moveMenu.display())
 		.toString());

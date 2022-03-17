@@ -4,19 +4,18 @@ import net.scilingo.menu.Menu;
 import net.scilingo.menu.BaseMenu;
 import net.scilingo.menu.MenuItem;
 import net.scilingo.menu.NumericMenuItem;
-import net.scilingo.menu.NumericMenuItemIndexedFromZero;
 import net.scilingo.menu.StringMenuItem;
 
 public class TicTacToeGameFactory {
 	
-	private static TicTacToePlayer _playerOne;
-	private static TicTacToePlayer _playerTwo;
-	private static TicTacToePlayer _playerComputer;
+	private static AbstractTicTacToePlayer _playerOne;
+	private static AbstractTicTacToePlayer _playerTwo;
+	private static AbstractTicTacToePlayer _playerComputer;
 	private static TicTacToeGameBoard _ticTacToeGameBoard;
 	private static Menu _playerMenu;
 	private static Menu _moveMenu;
 	
-	public static TicTacToePlayer generatePlayerOne() {
+	public static AbstractTicTacToePlayer generatePlayerOne() {
 		// generate the first time otherwise mutate instance
 		if(_playerOne == null) {
 			
@@ -36,7 +35,7 @@ public class TicTacToeGameFactory {
 		return _playerOne;
 	}
 	
-	public static TicTacToePlayer generatePlayerTwo() {
+	public static AbstractTicTacToePlayer generatePlayerTwo() {
 		// generate the first time otherwise mutate instance
 		if(_playerTwo == null)
 			_playerTwo = new TicTacToePlayerTwo();
@@ -46,7 +45,7 @@ public class TicTacToeGameFactory {
 		return _playerTwo;
 	}
 	
-	public static TicTacToePlayer generatePlayerComputer() {
+	public static AbstractTicTacToePlayer generatePlayerComputer() {
 		
 		if( ((TicTacToePlayerOne)_playerOne).getComputerOpponent() != null) {
 			((TicTacToePlayerOne)_playerOne).getComputerOpponent().reset();

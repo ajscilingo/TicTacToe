@@ -2,11 +2,10 @@ package net.scilingo.board.tictactoe;
 
 import net.scilingo.board.CellSelection;
 import net.scilingo.board.Move;
-import net.scilingo.board.Player;
 
 abstract class AbstractTicTacToeMove implements Move {
 
-	protected Player _player;
+	protected TicTacToePlayer _player;
 	protected final TicTacToeGameBoard _gameBoard;
 	protected final TicTacToeCellSelection _cellSelection;
 	
@@ -20,7 +19,7 @@ abstract class AbstractTicTacToeMove implements Move {
 		return new StringBuilder(this._cellSelection.ordinal()).append(".) ").append(this.toString()).toString();
 	}
 	
-	boolean placeMove(Player player, Row row, Column col, boolean gameOver) {
+	boolean placeMove(TicTacToePlayer player, Row row, Column col, boolean gameOver) {
 		if(this._gameBoard.canMove(row, col, gameOver)){
 			this._player = player;
 			this._gameBoard.placeMove(this._player.move(this), row, col);
@@ -30,7 +29,7 @@ abstract class AbstractTicTacToeMove implements Move {
 	}
 	
 	@Override
-	public Player madeBy() {
+	public TicTacToePlayer madeBy() {
 		return this._player;
 	}
 	
