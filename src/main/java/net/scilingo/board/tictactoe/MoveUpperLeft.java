@@ -1,7 +1,5 @@
 package net.scilingo.board.tictactoe;
 
-import net.scilingo.board.Player;
-
 public class MoveUpperLeft extends AbstractTicTacToeMove {
 
 	
@@ -10,7 +8,7 @@ public class MoveUpperLeft extends AbstractTicTacToeMove {
 	}
 	
 	@Override
-	public boolean move(Player player, boolean gameOver) {
+	public boolean move(TicTacToePlayer player, boolean gameOver) {
 		return super.placeMove(player, Row.UPPER, Column.LEFT, gameOver);
 	}
 	

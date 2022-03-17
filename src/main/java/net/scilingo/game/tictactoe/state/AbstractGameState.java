@@ -1,17 +1,25 @@
 package net.scilingo.game.tictactoe.state;
 
-import net.scilingo.board.Player;
+import net.scilingo.board.tictactoe.TicTacToePlayer;
 
-abstract class AbstractGameState implements GameState {
+public abstract class AbstractGameState {
 
-	protected Player _player;
+	protected TicTacToePlayer player;
+
+	public TicTacToePlayer getPlayer() {
+		return player;
+	}
+
+	public void setPlayer(TicTacToePlayer player) {
+		this.player = player;
+	}
 
 	public String printMoves() {
-		return this._player.getMoveHistory();
+		return player.getMoveHistory();
 	}
 	
 	public String printMoves(String format) {
-		return this._player.getMoveHistory(format);
+		return player.getMoveHistory(format);
 	}
 
 }

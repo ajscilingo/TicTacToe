@@ -8,7 +8,7 @@ import org.junit.Test;
 
 import net.scilingo.board.Constants;
 import net.scilingo.board.tictactoe.TicTacToeCellSelection;
-import net.scilingo.board.tictactoe.TicTacToePlayer;
+import net.scilingo.board.tictactoe.AbstractTicTacToePlayer;
 import net.scilingo.board.tictactoe.TicTacToeGameBoard;
 
 public class TestTopRowWin {
@@ -23,7 +23,7 @@ public class TestTopRowWin {
 	
 	@AfterClass
 	public static void after() {
-		assertEquals(net.scilingo.game.tictactoe.state.TopRowWin.class,  TicTacToePlayer.getGameState().getClass());
+		assertEquals(net.scilingo.game.tictactoe.state.TopRowWin.class,  AbstractTicTacToePlayer.getGameState().getClass());
 	}
 	
 	@Test

@@ -10,9 +10,8 @@ import org.junit.Test;
 
 import net.scilingo.board.Constants;
 import net.scilingo.board.tictactoe.TicTacToeCellSelection;
-import net.scilingo.board.tictactoe.TicTacToePlayer;
+import net.scilingo.board.tictactoe.AbstractTicTacToePlayer;
 import net.scilingo.board.tictactoe.TicTacToeGameBoard;
-import net.scilingo.game.Game;
 
 public class TestLeftDiagonalWin {
 	
@@ -28,7 +27,7 @@ public class TestLeftDiagonalWin {
 	@AfterClass
 	public static void after() {
 		assertTrue(ticTacToeGame.isGameOver());
-		assertEquals(net.scilingo.game.tictactoe.state.LeftDiagonalWin.class,  TicTacToePlayer.getGameState().getClass());
+		assertEquals(net.scilingo.game.tictactoe.state.LeftDiagonalWin.class,  AbstractTicTacToePlayer.getGameState().getClass());
 	}
 	
 	@Test

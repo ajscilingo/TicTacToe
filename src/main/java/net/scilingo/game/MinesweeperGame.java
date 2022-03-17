@@ -4,7 +4,7 @@ import java.util.Scanner;
 
 import net.scilingo.board.Board;
 import net.scilingo.board.CellSelection;
-import net.scilingo.board.Player;
+import net.scilingo.board.tictactoe.TicTacToePlayer;
 import net.scilingo.board.minesweeper.MinesweeperGameBoard;
 import net.scilingo.board.minesweeper.MinesweeperGameFactory;
 
@@ -25,7 +25,7 @@ public class MinesweeperGame implements Game{
 	}
 	
 	@Override
-	public Player getCurrentPlayer() {
+	public TicTacToePlayer getCurrentPlayer() {
 		// TODO Auto-generated method stub
 		return null;
 	}

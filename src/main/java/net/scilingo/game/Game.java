@@ -4,12 +4,12 @@ import java.io.Serializable;
 import java.util.Scanner;
 
 import net.scilingo.board.Board;
-import net.scilingo.board.Player;
+import net.scilingo.board.tictactoe.TicTacToePlayer;
 import net.scilingo.board.CellSelection;
 
 interface Game extends Serializable {
 
-	Player getCurrentPlayer();
+	TicTacToePlayer getCurrentPlayer();
 
 	Board getGameBoard();
 	
