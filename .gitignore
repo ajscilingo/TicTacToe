@@ -2,3 +2,7 @@
 bin/
 target/
 .idea/*
+.classpath
+.project
+.settings
+

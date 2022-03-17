@@ -63,7 +63,7 @@ public class TicTacToePlayerComputer extends TicTacToePlayerTwo {
 			this._preferedMoves.clear();
 		
 		// setup a list of available strategic moves
-		this._preferedMoves.addAll(Arrays.asList(TicTacToeCellSelection.getAdjacentCells(this._playerOnesLastMove)));
+		this._preferedMoves.addAll(Arrays.asList(this._playerOnesLastMove.getAdjacentCells()));
 		
 		// shuffle possible moves
 		Collections.shuffle(this._preferedMoves);
