@@ -6,6 +6,7 @@ import net.scilingo.board.*;
 import net.scilingo.board.tictactoe.*;
 import net.scilingo.game.tictactoe.state.AbstractGameState;
 import net.scilingo.game.tictactoe.state.ToHtml;
+import net.scilingo.game.tictactoe.state.Winnable;
 import net.scilingo.menu.Menu;
 
 public class TicTacToeGame implements Game {
@@ -169,7 +170,7 @@ public class TicTacToeGame implements Game {
 		AbstractGameState gameState = AbstractTicTacToePlayer.getGameState();
 		
 		if(gameState != null)
-			return gameState.toString();
+			return ((Winnable)gameState).winnerMessage();
 		else
 			return "";
 	}

@@ -4,14 +4,22 @@ import net.scilingo.board.tictactoe.TicTacToePlayer;
 
 public abstract class AbstractGameState {
 
-	protected TicTacToePlayer _player;
+	protected TicTacToePlayer player;
+
+	public TicTacToePlayer getPlayer() {
+		return player;
+	}
+
+	public void setPlayer(TicTacToePlayer player) {
+		this.player = player;
+	}
 
 	public String printMoves() {
-		return this._player.getMoveHistory();
+		return player.getMoveHistory();
 	}
 	
 	public String printMoves(String format) {
-		return this._player.getMoveHistory(format);
+		return player.getMoveHistory(format);
 	}
 
 }
