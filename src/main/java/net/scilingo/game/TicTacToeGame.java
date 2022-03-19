@@ -245,7 +245,7 @@ public class TicTacToeGame implements Game {
 	}
 	
 	/* (non-Javadoc)
-	 * @see net.scilingo.game.Game#makeMove(net.scilingo.board.Cell)
+	 * @see net.scilingo.game.Game#makeMove(net.scilingo.board.tictactoe.TicTacToeCellSelection)
 	 */
 	@Override
 	public boolean makeMove(TicTacToeCellSelection cellSelection){
