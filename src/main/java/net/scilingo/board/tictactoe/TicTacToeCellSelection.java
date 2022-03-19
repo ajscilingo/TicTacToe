@@ -1,8 +1,6 @@
 package net.scilingo.board.tictactoe;
 
-import net.scilingo.board.CellSelection;
-
-public enum TicTacToeCellSelection implements CellSelection{
+public enum TicTacToeCellSelection  {
 	UPPER_LEFT {
 		@Override
 		public TicTacToeCellSelection[] getAdjacentCells(){

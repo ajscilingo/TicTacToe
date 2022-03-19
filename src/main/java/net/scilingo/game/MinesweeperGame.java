@@ -8,7 +8,7 @@ import net.scilingo.board.tictactoe.TicTacToePlayer;
 import net.scilingo.board.minesweeper.MinesweeperGameBoard;
 import net.scilingo.board.minesweeper.MinesweeperGameFactory;
 
-public class MinesweeperGame implements Game{
+public class MinesweeperGame {
 
 	/**
 	 * 
@@ -23,47 +23,6 @@ public class MinesweeperGame implements Game{
 	public MinesweeperGame(int rows, int columns) {
 		_gameBoard = MinesweeperGameFactory.generateGameBoard(rows, columns);
 	}
-	
-	@Override
-	public TicTacToePlayer getCurrentPlayer() {
-		// TODO Auto-generated method stub
-		return null;
-	}
 
-	@Override
-	public Board getGameBoard() {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
-	public Game play(Scanner sc) {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
-	public void checkForWin() {
-		// TODO Auto-generated method stub
-		
-	}
-
-	@Override
-	public boolean isGameOver() {
-		// TODO Auto-generated method stub
-		return false;
-	}
-
-	@Override
-	public boolean playAgain(Scanner sc) {
-		// TODO Auto-generated method stub
-		return false;
-	}
-
-	@Override
-	public boolean makeMove(CellSelection cellSelection) {
-		// TODO Auto-generated method stub
-		return false;
-	}
 
 }

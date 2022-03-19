@@ -4,6 +4,7 @@ import java.io.Serializable;
 import java.util.Scanner;
 
 import net.scilingo.board.Board;
+import net.scilingo.board.tictactoe.TicTacToeCellSelection;
 import net.scilingo.board.tictactoe.TicTacToePlayer;
 import net.scilingo.board.CellSelection;
 
@@ -21,6 +22,6 @@ interface Game extends Serializable {
 
 	boolean playAgain(Scanner sc);
 
-	boolean makeMove(CellSelection cellSelection);
+	boolean makeMove(TicTacToeCellSelection cellSelection);
 
 }

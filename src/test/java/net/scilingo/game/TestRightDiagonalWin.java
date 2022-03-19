@@ -12,7 +12,7 @@ import net.scilingo.board.tictactoe.TicTacToeCellSelection;
 import net.scilingo.board.tictactoe.AbstractTicTacToePlayer;
 import net.scilingo.board.tictactoe.TicTacToeGameBoard;
 
-public class TestRightDiagonalWin {
+public class  TestRightDiagonalWin {
 
 	private static Game ticTacToeGame;
 	private static TicTacToeGameBoard ticTacToeGameBoard;

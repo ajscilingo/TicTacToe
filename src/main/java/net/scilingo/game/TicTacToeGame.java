@@ -248,11 +248,11 @@ public class TicTacToeGame implements Game {
 	 * @see net.scilingo.game.Game#makeMove(net.scilingo.board.Cell)
 	 */
 	@Override
-	public boolean makeMove(CellSelection cellSelection){
+	public boolean makeMove(TicTacToeCellSelection cellSelection){
 		
 		boolean moveSuccess = false;
 		
-		TicTacToeCellSelection ticTacToeCellSelection = (TicTacToeCellSelection) cellSelection;
+		TicTacToeCellSelection ticTacToeCellSelection = cellSelection;
 		
 		if(!_gameOver) {
 			
