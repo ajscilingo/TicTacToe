@@ -30,6 +30,5 @@ public class Constants {
 	// Rows and Columns for a Tic-Tac-Toe Board
 	public static final int NUM_OF_COLS = 3;
 	public static final int NUM_OF_ROWS = 3;
-	
 
 }
