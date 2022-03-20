@@ -4,24 +4,20 @@ import net.scilingo.board.Move;
 
 abstract class AbstractTicTacToeMove implements Move {
 
-	protected TicTacToePlayer _player;
-	protected final TicTacToeGameBoard _gameBoard;
-	protected final TicTacToeCellSelection _cellSelection;
+	protected TicTacToePlayer player;
+	protected final TicTacToeGameBoard gameBoard;
+	protected final TicTacToeCellSelection cellSelection;
 	
 	AbstractTicTacToeMove(final TicTacToeCellSelection cellSelection, final TicTacToeGameBoard gameBoard){
-		this._player = null;
-		this._gameBoard = gameBoard;
-		this._cellSelection = cellSelection;	
-	}
-	
-	public String getDisplayName() {
-		return new StringBuilder(this._cellSelection.ordinal()).append(".) ").append(this.toString()).toString();
+		this.player = null;
+		this.gameBoard = gameBoard;
+		this.cellSelection = cellSelection;
 	}
 	
 	boolean placeMove(final TicTacToePlayer player, final Row row, final Column col, final boolean gameOver) {
-		if(this._gameBoard.canMove(row, col, gameOver)){
-			this._player = player;
-			this._gameBoard.placeMove(this._player.move(this), row, col);
+		if(this.gameBoard.canMove(row, col, gameOver)){
+			this.player = player;
+			this.gameBoard.placeMove(this.player.move(this), row, col);
 			return true;
 		}
 		return false;
@@ -29,12 +25,12 @@ abstract class AbstractTicTacToeMove implements Move {
 	
 	@Override
 	public TicTacToePlayer madeBy() {
-		return this._player;
+		return this.player;
 	}
 	
 	@Override
 	public TicTacToeCellSelection getDestinationCell() {
-		return this._cellSelection;
+		return this.cellSelection;
 	}
 
 }

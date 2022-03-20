@@ -15,28 +15,28 @@ public class TicTacToeGame implements Game {
 	 * 
 	 */
 	private static final long serialVersionUID = 1401219477193635111L;
-	private boolean _gameOver;
-	protected TicTacToePlayer _currentPlayer;
-	protected TicTacToePlayer _player1;
-	protected TicTacToePlayer _player2;
-	protected TicTacToePlayer _playerHuman;
-	protected TicTacToePlayer _playerComputer;
-	protected TicTacToeGameBoard _gameBoard;
-	protected Menu _playerMenu;
-	protected Menu _moveMenu;
+	private boolean gameOver;
+	protected TicTacToePlayer currentPlayer;
+	protected TicTacToePlayer player1;
+	protected TicTacToePlayer player2;
+	protected TicTacToePlayer playerHuman;
+	protected TicTacToePlayer playerComputer;
+	protected TicTacToeGameBoard gameBoard;
+	protected Menu playerMenu;
+	protected Menu moveMenu;
 	
 	public TicTacToeGame(){
-		_gameBoard = TicTacToeGameFactory.generateGameBoard();
-		_player1 = TicTacToeGameFactory.generatePlayerOne();
-		_player2 = TicTacToeGameFactory.generatePlayerTwo();
-		_playerHuman = null;
-		_playerComputer = null;
-		_gameOver = false;
-		_currentPlayer = _player1;
+		gameBoard = TicTacToeGameFactory.generateGameBoard();
+		player1 = TicTacToeGameFactory.generatePlayerOne();
+		player2 = TicTacToeGameFactory.generatePlayerTwo();
+		playerHuman = null;
+		playerComputer = null;
+		gameOver = false;
+		currentPlayer = player1;
 		// create player 1 / player 2 menu selection
-		_playerMenu = TicTacToeGameFactory.generatePlayerMenu();
+		playerMenu = TicTacToeGameFactory.generatePlayerMenu();
 		// move menu selection
-		_moveMenu = TicTacToeGameFactory.generateMoveMenu();
+		moveMenu = TicTacToeGameFactory.generateMoveMenu();
 	}
 	
 	public TicTacToeGame(boolean humanPlayer)
@@ -44,33 +44,34 @@ public class TicTacToeGame implements Game {
 		this();
 		
 		if(!humanPlayer) {
-			_playerComputer = TicTacToeGameFactory.generatePlayerComputer();
-			_player2 = _playerComputer;
+			playerComputer = TicTacToeGameFactory.generatePlayerComputer();
+			player2 = playerComputer;
 			
 		}
 		else {
-			_playerHuman = _player2;
+			playerHuman = player2;
 		}
 		
 	}
 	
 	public void determinePlayerTwo(Scanner sc) {
-		while(_player2 == null) {
+		while(player2 == null) {
 			showPlayerMenu();
 			
 			try {
-				int playerSelection = sc.nextInt();
-				
-				if(playerSelection == Constants.TWO_PLAYER) {
-					_playerHuman = TicTacToeGameFactory.generatePlayerTwo();
-					_player2 = _playerHuman;
-				}
-				else if(playerSelection == Constants.ONE_PLAYER) {
-					_playerComputer = TicTacToeGameFactory.generatePlayerComputer();
-					_player2 = _playerComputer;
-				}
-				else {
-					System.out.println(Constants.ONE_OR_TWO_PLAYERS_MSG);
+				// sc.nextInt() is taking in either 1 for 1 Player or 2 for 2 Player
+				switch(sc.nextInt()) {
+					case Constants.TWO_PLAYER :
+						playerHuman = TicTacToeGameFactory.generatePlayerTwo();
+						player2 = playerHuman;
+						break;
+					case Constants.ONE_PLAYER:
+						playerComputer = TicTacToeGameFactory.generatePlayerComputer();
+						player2 = playerComputer;
+						break;
+					default:
+						System.out.println(Constants.ONE_OR_TWO_PLAYERS_MSG);
+						break;
 				}
 			}
 			catch(Exception e){
@@ -86,18 +87,18 @@ public class TicTacToeGame implements Game {
 	 */
 	@Override
 	public TicTacToePlayer getCurrentPlayer(){
-		if(_currentPlayer == null)
-			return _player1;
+		if(currentPlayer == null)
+			return player1;
 		
-		if(_currentPlayer.equals(_player1))
-			return _player2;
+		if(currentPlayer.equals(player1))
+			return player2;
 		else
-			return _player1;
+			return player1;
 	}
 	
 	public TicTacToePlayerComputer getComputerPlayer() {
-		if(_player2.equals(_playerComputer))
-			return (TicTacToePlayerComputer) _playerComputer;
+		if(player2.equals(playerComputer))
+			return (TicTacToePlayerComputer) playerComputer;
 		else
 			return null;
 	}
@@ -109,12 +110,12 @@ public class TicTacToeGame implements Game {
 	public Game play(Scanner sc){
 		
 		// set _player2 to null again for determining what it should be
-		_player2 = null;
+		player2 = null;
 		determinePlayerTwo(sc);
 		
 		while(!isGameOver()){
 			
-			if( _currentPlayer.equals(_player1) || _currentPlayer.equals(_playerHuman) )
+			if( currentPlayer.equals(player1) || currentPlayer.equals(playerHuman) )
 			{
 				
 				showMoveMenu();
@@ -124,18 +125,18 @@ public class TicTacToeGame implements Game {
 				}
 				catch(Exception e){
 					// prevent user from changing on exception
-					_currentPlayer = getCurrentPlayer();
+					currentPlayer = getCurrentPlayer();
 					sc.nextLine();
 				}
 			}
-			else if(_currentPlayer.equals(_playerComputer)) {
+			else if(currentPlayer.equals(playerComputer)) {
 				
-				TicTacToePlayerComputer computerPlayer = (TicTacToePlayerComputer) _playerComputer;
+				TicTacToePlayerComputer computerPlayer = (TicTacToePlayerComputer) playerComputer;
 				
 				try {
 					while(makeMove(computerPlayer.getNextMove()) == false){
 						System.out.println("Space Already Occupied Trying Again");
-						_currentPlayer = getCurrentPlayer();
+						currentPlayer = getCurrentPlayer();
 					}
 				}
 				catch(Exception e){
@@ -158,9 +159,9 @@ public class TicTacToeGame implements Game {
 	@Override
 	public void checkForWin(){
 	
-		if(_currentPlayer.isGameOver()){
+		if(currentPlayer.isGameOver()){
 			System.out.println(AbstractTicTacToePlayer.getGameState());
-			_gameOver =  true;		
+			gameOver =  true;
 		}
 			
 	}
@@ -191,7 +192,7 @@ public class TicTacToeGame implements Game {
 	 */
 	@Override
 	public boolean isGameOver() {
-		return _gameOver;
+		return gameOver;
 	}
 	
 	
@@ -199,25 +200,25 @@ public class TicTacToeGame implements Game {
 		
 		System.out.println(" ");
 		System.out.println(" ");
-		System.out.print(this._gameBoard);
+		System.out.print(this.gameBoard);
 		System.out.println(" ");
 		System.out.println(" ");
 	}
 	
 	
 	protected void showPlayerMenu() {
-		System.out.println(this._playerMenu.display());
+		System.out.println(this.playerMenu.display());
 	}
 	
 	private void showMoveMenu(){
 		
 		StringBuilder sb = new StringBuilder();
 		System.out.print(sb
-		.append(_currentPlayer)
+		.append(currentPlayer)
 		.append(" Make move #")
 		.append(AbstractTicTacToePlayer.getNumberOfMoves() + 1)
 		.append(Constants.NEWLINE)
-		.append(_moveMenu.display())
+		.append(moveMenu.display())
 		.toString());
 	}
 	
@@ -226,17 +227,15 @@ public class TicTacToeGame implements Game {
 	 */
 	@Override
 	public boolean playAgain(Scanner sc) {
-		System.out.println(Constants.PLAY_AGAIN_MSG);
-		String response = sc.next().toUpperCase();
-		
-		boolean stopLooping = ( Constants.YES.equals(response) || Constants.Y.equals(response) || Constants.N.equals(response) || Constants.NO.equals(response) );
-		
+		String response = null;
+		boolean stopLooping = false;
+
 		while(!stopLooping) {
 			System.out.println(Constants.PLAY_AGAIN_MSG);
 			response = sc.next().toUpperCase();
 			stopLooping = ( Constants.YES.equals(response) || Constants.Y.equals(response) || Constants.N.equals(response) || Constants.NO.equals(response) );
 		}
-		
+
 		if(Constants.YES.equals(response) || Constants.Y.equals(response))
 			return true;
 		else 
@@ -254,35 +253,35 @@ public class TicTacToeGame implements Game {
 		
 		TicTacToeCellSelection ticTacToeCellSelection = cellSelection;
 		
-		if(!_gameOver) {
+		if(!gameOver) {
 			
 			switch (ticTacToeCellSelection) {
 				case UPPER_LEFT:
-					moveSuccess = new MoveUpperLeft(this._gameBoard).move(this._currentPlayer, this._gameOver);
+					moveSuccess = new MoveUpperLeft(this.gameBoard).move(this.currentPlayer, this.gameOver);
 					break;
 				case UPPER_MIDDLE: 
-					moveSuccess = new MoveUpperMiddle(this._gameBoard).move(this._currentPlayer, this._gameOver);	
+					moveSuccess = new MoveUpperMiddle(this.gameBoard).move(this.currentPlayer, this.gameOver);
 					break;
 				case UPPER_RIGHT: 
-					moveSuccess = new MoveUpperRight(this._gameBoard).move(this._currentPlayer, this._gameOver);
+					moveSuccess = new MoveUpperRight(this.gameBoard).move(this.currentPlayer, this.gameOver);
 					break;
 				case MIDDLE_LEFT: 
-					moveSuccess = new MoveMiddleLeft(this._gameBoard).move(this._currentPlayer, this._gameOver);
+					moveSuccess = new MoveMiddleLeft(this.gameBoard).move(this.currentPlayer, this.gameOver);
 					break;
 				case MIDDLE_MIDDLE: 
-					moveSuccess = new MoveMiddleMiddle(this._gameBoard).move(this._currentPlayer, this._gameOver);
+					moveSuccess = new MoveMiddleMiddle(this.gameBoard).move(this.currentPlayer, this.gameOver);
 					break;
 				case MIDDLE_RIGHT: 
-					moveSuccess = new MoveMiddleRight(this._gameBoard).move(this._currentPlayer, this._gameOver);
+					moveSuccess = new MoveMiddleRight(this.gameBoard).move(this.currentPlayer, this.gameOver);
 					break;
 				case LOWER_LEFT: 
-					moveSuccess = new MoveLowerLeft(this._gameBoard).move(this._currentPlayer, this._gameOver);
+					moveSuccess = new MoveLowerLeft(this.gameBoard).move(this.currentPlayer, this.gameOver);
 					break;
 				case LOWER_MIDDLE: 
-					moveSuccess = new MoveLowerMiddle(this._gameBoard).move(this._currentPlayer, this._gameOver);
+					moveSuccess = new MoveLowerMiddle(this.gameBoard).move(this.currentPlayer, this.gameOver);
 					break;
 				case LOWER_RIGHT: 
-					moveSuccess = new MoveLowerRight(this._gameBoard).move(this._currentPlayer, this._gameOver);
+					moveSuccess = new MoveLowerRight(this.gameBoard).move(this.currentPlayer, this.gameOver);
 					break;
 				default:
 					break;
@@ -292,13 +291,13 @@ public class TicTacToeGame implements Game {
 				showBoard();
 				checkForWin();
 			}
-			_currentPlayer = getCurrentPlayer();
+			currentPlayer = getCurrentPlayer();
 		}
 		return moveSuccess;
 	}
 
 	@Override
-	public Board getGameBoard() {
-		return _gameBoard;
+	public AbstractGameBoard getGameBoard() {
+		return gameBoard;
 	}
 }

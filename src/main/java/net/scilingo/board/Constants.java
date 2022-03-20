@@ -26,6 +26,10 @@ public class Constants {
 	public static final String Y = "Y";
 	public static final String NO = "NO";
 	public static final String N = "N";
+
+	// Rows and Columns for a Tic-Tac-Toe Board
+	public static final int NUM_OF_COLS = 3;
+	public static final int NUM_OF_ROWS = 3;
 	
 
 }

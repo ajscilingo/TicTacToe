@@ -15,50 +15,50 @@ public class TicTacToeGameBoard extends AbstractGameBoard {
 
 	
 	TicTacToeGameBoard(){
-		super(3,3);
+		super(Constants.NUM_OF_ROWS,Constants.NUM_OF_COLS);
 		clearBoard();
 	}
 	
 	public final char getUpperLeftCell() {
-		return _gameBoard[UpperRow][LeftColumn];
+		return gameBoard[UpperRow][LeftColumn];
 	}
 	
 	public final char getUpperMiddleCell() {
-		return _gameBoard[UpperRow][MiddleColumn];
+		return gameBoard[UpperRow][MiddleColumn];
 	}
 	
 	public final char getUpperRightCell() {
-		return _gameBoard[UpperRow][RightColumn];
+		return gameBoard[UpperRow][RightColumn];
 	}
 	
 	public final char getMiddleLeftCell() {
-		return _gameBoard[MiddleRow][LeftColumn];
+		return gameBoard[MiddleRow][LeftColumn];
 	}
 	
 	public final char getMiddleMiddleCell() {
-		return _gameBoard[MiddleRow][MiddleColumn];
+		return gameBoard[MiddleRow][MiddleColumn];
 	}
 	
 	public final char getMiddleRightCell() {
-		return _gameBoard[MiddleRow][RightColumn];
+		return gameBoard[MiddleRow][RightColumn];
 	}
 
 	public final char getLowerLeftCell() {
-		return _gameBoard[LowerRow][LeftColumn];
+		return gameBoard[LowerRow][LeftColumn];
 	}
 	
 	public final char getLowerMiddleCell() {
-		return _gameBoard[LowerRow][MiddleColumn];
+		return gameBoard[LowerRow][MiddleColumn];
 	}
 	
 	public final char getLowerRightCell() {
-		return _gameBoard[LowerRow][RightColumn];
+		return gameBoard[LowerRow][RightColumn];
 	}
 	
 	protected void clearBoard(){
-		for(int row=0; row<3; row++){
-			for(int col=0; col<3; col++){
-				_gameBoard[row][col] = Constants.UNOCCUPIED_SPACE;
+		for(int row=0; row<Constants.NUM_OF_ROWS; row++){
+			for(int col=0; col<Constants.NUM_OF_COLS; col++){
+				gameBoard[row][col] = Constants.UNOCCUPIED_SPACE;
 			}
 		}
 	}
@@ -68,14 +68,14 @@ public class TicTacToeGameBoard extends AbstractGameBoard {
 		int row = r.ordinal();
 		int col = c.ordinal();
 		
-		_gameBoard[row][col] = playerMove;
+		gameBoard[row][col] = playerMove;
 	}
 	
 	protected boolean canMove(Row r, Column c, boolean gameOver){
 		int row = r.ordinal();
 		int col = c.ordinal();
 		
-		if(_gameBoard[row][col] == Constants.UNOCCUPIED_SPACE && gameOver == false)
+		if(gameBoard[row][col] == Constants.UNOCCUPIED_SPACE && gameOver == false)
 			return true;
 		return false;
 	}
@@ -86,23 +86,23 @@ public class TicTacToeGameBoard extends AbstractGameBoard {
 		StringBuilder sb = new StringBuilder();
 		
 		return sb
-		.append(_gameBoard[UpperRow][LeftColumn])
+		.append(gameBoard[UpperRow][LeftColumn])
 		.append(Constants.CELL_SPACER)
-		.append(_gameBoard[UpperRow][MiddleColumn])
+		.append(gameBoard[UpperRow][MiddleColumn])
 		.append(Constants.CELL_SPACER)
-		.append(_gameBoard[UpperRow][RightColumn])
+		.append(gameBoard[UpperRow][RightColumn])
 		.append(Constants.NEWLINE)
-		.append(_gameBoard[MiddleRow][LeftColumn])
+		.append(gameBoard[MiddleRow][LeftColumn])
 		.append(Constants.CELL_SPACER)
-		.append(_gameBoard[MiddleRow][MiddleColumn])
+		.append(gameBoard[MiddleRow][MiddleColumn])
 		.append(Constants.CELL_SPACER)
-		.append(_gameBoard[MiddleRow][RightColumn])
+		.append(gameBoard[MiddleRow][RightColumn])
 		.append(Constants.NEWLINE)
-		.append(_gameBoard[LowerRow][LeftColumn])
+		.append(gameBoard[LowerRow][LeftColumn])
 		.append(Constants.CELL_SPACER)
-		.append(_gameBoard[LowerRow][MiddleColumn])
+		.append(gameBoard[LowerRow][MiddleColumn])
 		.append(Constants.CELL_SPACER)
-		.append(_gameBoard[LowerRow][RightColumn])
+		.append(gameBoard[LowerRow][RightColumn])
 		.toString();
 	}
 }

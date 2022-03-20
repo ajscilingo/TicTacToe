@@ -8,80 +8,80 @@ import net.scilingo.menu.StringMenuItem;
 
 public class TicTacToeGameFactory {
 	
-	private static AbstractTicTacToePlayer _playerOne;
-	private static AbstractTicTacToePlayer _playerTwo;
-	private static AbstractTicTacToePlayer _playerComputer;
-	private static TicTacToeGameBoard _ticTacToeGameBoard;
-	private static Menu _playerMenu;
-	private static Menu _moveMenu;
+	private static AbstractTicTacToePlayer playerOne;
+	private static AbstractTicTacToePlayer playerTwo;
+	private static AbstractTicTacToePlayer playerComputer;
+	private static TicTacToeGameBoard ticTacToeGameBoard;
+	private static Menu playerMenu;
+	private static Menu moveMenu;
 	
 	public static AbstractTicTacToePlayer generatePlayerOne() {
 		// generate the first time otherwise mutate instance
-		if(_playerOne == null) {
+		if(playerOne == null) {
 			
-			_playerOne = new TicTacToePlayerOne();
+			playerOne = new TicTacToePlayerOne();
 		
-			if(_playerComputer == null) {
-				_playerComputer = new TicTacToePlayerComputer();
-				((TicTacToePlayerOne)_playerOne).setComputerOpponent((TicTacToePlayerComputer)_playerComputer);
+			if(playerComputer == null) {
+				playerComputer = new TicTacToePlayerComputer();
+				((TicTacToePlayerOne) playerOne).setComputerOpponent((TicTacToePlayerComputer) playerComputer);
 			}
 			
 		}
 		else {
-			_playerOne.reset();
-			_playerComputer.reset();
+			playerOne.reset();
+			playerComputer.reset();
 		}
 		
-		return _playerOne;
+		return playerOne;
 	}
 	
 	public static AbstractTicTacToePlayer generatePlayerTwo() {
 		// generate the first time otherwise mutate instance
-		if(_playerTwo == null)
-			_playerTwo = new TicTacToePlayerTwo();
+		if(playerTwo == null)
+			playerTwo = new TicTacToePlayerTwo();
 		else
-			_playerTwo.reset();
+			playerTwo.reset();
 		
-		return _playerTwo;
+		return playerTwo;
 	}
 	
 	public static AbstractTicTacToePlayer generatePlayerComputer() {
 		
-		if( ((TicTacToePlayerOne)_playerOne).getComputerOpponent() != null) {
-			((TicTacToePlayerOne)_playerOne).getComputerOpponent().reset();
-			return  ((TicTacToePlayerOne)_playerOne).getComputerOpponent();
+		if( ((TicTacToePlayerOne) playerOne).getComputerOpponent() != null) {
+			((TicTacToePlayerOne) playerOne).getComputerOpponent().reset();
+			return  ((TicTacToePlayerOne) playerOne).getComputerOpponent();
 		}
 		else {
-			_playerComputer = new TicTacToePlayerComputer();
-			((TicTacToePlayerOne)_playerOne).setComputerOpponent((TicTacToePlayerComputer)_playerComputer);
-			return _playerComputer;
+			playerComputer = new TicTacToePlayerComputer();
+			((TicTacToePlayerOne) playerOne).setComputerOpponent((TicTacToePlayerComputer) playerComputer);
+			return playerComputer;
 		}
 	}
 	
 	public static TicTacToeGameBoard generateGameBoard() {
-		if(_ticTacToeGameBoard == null)
-			_ticTacToeGameBoard = new TicTacToeGameBoard();
+		if(ticTacToeGameBoard == null)
+			ticTacToeGameBoard = new TicTacToeGameBoard();
 		else
-			_ticTacToeGameBoard.clearBoard();
-		return _ticTacToeGameBoard;
+			ticTacToeGameBoard.clearBoard();
+		return ticTacToeGameBoard;
 	}
 	
 	public static Menu generatePlayerMenu() {
 		
-		if(_playerMenu == null) {
-			_playerMenu = new BaseMenu("Choose Number Of Players:");
+		if(playerMenu == null) {
+			playerMenu = new BaseMenu("Choose Number Of Players:");
 			MenuItem onePlayerMenuItem = new NumericMenuItem("1 Player");
 			MenuItem twoPlayerMenuItem = new NumericMenuItem("2 Player");
-			_playerMenu.addMenuItem(onePlayerMenuItem);
-			_playerMenu.addMenuItem(twoPlayerMenuItem);
+			playerMenu.addMenuItem(onePlayerMenuItem);
+			playerMenu.addMenuItem(twoPlayerMenuItem);
 		}
 		
-		return _playerMenu;
+		return playerMenu;
 	}
 	
 	public static Menu generateMoveMenu() {
-		if(_moveMenu == null) {
-			_moveMenu = new BaseMenu();
+		if(moveMenu == null) {
+			moveMenu = new BaseMenu();
 			MenuItem upperLeftMenuItem = new StringMenuItem(
 					Integer.toString(TicTacToeCellSelection.UPPER_LEFT.ordinal()), 
 						"Move To Upper Left");
@@ -109,16 +109,16 @@ public class TicTacToeGameFactory {
 			MenuItem lowerRightMenuItem = new StringMenuItem(
 					Integer.toString(TicTacToeCellSelection.LOWER_RIGHT.ordinal()), 
 						"Move To Lower Right");
-			_moveMenu.addMenuItem(upperLeftMenuItem);
-			_moveMenu.addMenuItem(upperCenterMenuItem);
-			_moveMenu.addMenuItem(upperRightMenuItem);
-			_moveMenu.addMenuItem(centerLeftMenuItem);
-			_moveMenu.addMenuItem(centerMenuItem);
-			_moveMenu.addMenuItem(centerRightMenuItem);
-			_moveMenu.addMenuItem(lowerLeftMenuItem);
-			_moveMenu.addMenuItem(lowerCenterMenuItem);
-			_moveMenu.addMenuItem(lowerRightMenuItem);
+			moveMenu.addMenuItem(upperLeftMenuItem);
+			moveMenu.addMenuItem(upperCenterMenuItem);
+			moveMenu.addMenuItem(upperRightMenuItem);
+			moveMenu.addMenuItem(centerLeftMenuItem);
+			moveMenu.addMenuItem(centerMenuItem);
+			moveMenu.addMenuItem(centerRightMenuItem);
+			moveMenu.addMenuItem(lowerLeftMenuItem);
+			moveMenu.addMenuItem(lowerCenterMenuItem);
+			moveMenu.addMenuItem(lowerRightMenuItem);
 		}
-		return _moveMenu;
+		return moveMenu;
 	}
 }

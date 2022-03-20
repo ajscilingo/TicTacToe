@@ -5,7 +5,7 @@ import net.scilingo.board.Move;
 
 class TicTacToePlayerOne extends AbstractTicTacToePlayer {
 	
-	private TicTacToePlayerComputer _computerPlayer = null;
+	private TicTacToePlayerComputer computerPlayer = null;
 	
 	TicTacToePlayerOne(){
 		super(Constants.X_SYMBOL);
@@ -13,15 +13,15 @@ class TicTacToePlayerOne extends AbstractTicTacToePlayer {
 	
 	TicTacToePlayerOne(TicTacToePlayerComputer computerPlayer){
 		this();
-		this._computerPlayer = computerPlayer;
+		this.computerPlayer = computerPlayer;
 	}
 	
 	void setComputerOpponent(TicTacToePlayerComputer computerPlayer) {
-		this._computerPlayer = computerPlayer;
+		this.computerPlayer = computerPlayer;
 	}
 	
 	TicTacToePlayerComputer getComputerOpponent() {
-		return this._computerPlayer;
+		return this.computerPlayer;
 	}
 	
 	@Override
@@ -41,10 +41,14 @@ class TicTacToePlayerOne extends AbstractTicTacToePlayer {
 		// record move for computer player 
 		// if computer player not null
 		
-		if(this._computerPlayer != null) 
-			this._computerPlayer.recordPlayerOnesMove(move.getDestinationCell());
+		if(this.computerPlayer != null)
+			this.computerPlayer.recordPlayerOnesMove(move.getDestinationCell());
 		
 		return x;
 	}
-	
+
+	@Override
+	public String toString() {
+		return "Player 1";
+	}
 }

@@ -7,7 +7,6 @@ public interface Move {
 
 	public boolean move(TicTacToePlayer player, boolean gameOver);
 	public TicTacToePlayer madeBy();
-	public String getDisplayName();
 	public TicTacToeCellSelection getDestinationCell();
 	
 }

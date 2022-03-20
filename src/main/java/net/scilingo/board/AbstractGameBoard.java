@@ -1,22 +1,20 @@
 package net.scilingo.board;
 
-abstract public class AbstractGameBoard implements Board {
+abstract public class AbstractGameBoard {
 
-	protected final char [][] _gameBoard;
-	protected final int _rows;
-	protected final int _cols;
-	
-	// Default Constructor
+	protected final char [][] gameBoard;
+	protected final int rows;
+	protected final int cols;
+
 	AbstractGameBoard(){
-		_rows = 1;
-		_cols = 1;
-		_gameBoard = new char[_rows][_cols];
+		rows = 3;
+		cols = 3;
+		gameBoard = new char[rows][cols];
 	}
-	
-	// Custom Constructor
+
 	protected AbstractGameBoard(int rows, int cols) {
-		this._rows = rows;
-		this._cols = cols;
-		_gameBoard = new char[rows][cols];
+		this.rows = rows;
+		this.cols = cols;
+		gameBoard = new char[rows][cols];
 	}
 }

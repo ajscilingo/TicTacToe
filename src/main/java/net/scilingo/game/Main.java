@@ -12,11 +12,7 @@ public class Main {
 		while(g != null) {
 			g = g.play(sc);
 		}
-		
-//		Game g = new MinesweeperGame(10,10);
-//		g.play();
-		
-		
+
 	}
 	
 }
